@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5t08tnwtjbie"]
 
 [ext_resource type="Script" path="res://prefabs/player_character.gd" id="1_u7tqp"]
+[ext_resource type="Material" uid="uid://cgeu5wbalop1h" path="res://shaders/masked_sprite.tres" id="2_8ill0"]
 [ext_resource type="PackedScene" uid="uid://bblw5evq071u" path="res://prefabs/interaction_area.tscn" id="2_ul157"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5cmy"]
-radius = 0.6
+radius = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhduh"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ysk7q"]
-radius = 0.6
+[sub_resource type="QuadMesh" id="QuadMesh_b2gcn"]
+size = Vector2(2, 2)
 
 [node name="Character" type="CharacterBody3D"]
 collision_layer = 2
@@ -25,8 +24,8 @@ transform = Transform3D(1, 0, 0, 0, 0.999809, 0.0195639, 0, -0.0195639, 0.999809
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ModelPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_override = SubResource("StandardMaterial3D_xhduh")
-mesh = SubResource("CapsuleMesh_ysk7q")
+material_override = ExtResource("2_8ill0")
+mesh = SubResource("QuadMesh_b2gcn")
 skeleton = NodePath("../..")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_ul157")]

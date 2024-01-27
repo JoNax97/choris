@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var speed = 500.0
 @export var acceleration = 50.0
 
-@onready var meshInstance : MeshInstance3D = $ModelPivot/MeshInstance3D
+@onready var sprite : MeshInstance3D = $ModelPivot/MeshInstance3D
 @onready var interaction_area : InteractionArea = $InteractionArea
 
 var picked_object: PickableObject
@@ -17,9 +17,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	player_idx = InputManager.add_device()
-	var mat_instance = meshInstance.material_override.duplicate()
-	meshInstance.material_override = mat_instance
-	mat_instance.albedo_color = player_colors[player_idx]
+	var mat_instance = sprite.material_override.duplicate()
+	sprite.material_override = mat_instance
+	mat_instance.set_shader_parameter("replacement_color", player_colors[player_idx])
 
 
 func _physics_process(delta):

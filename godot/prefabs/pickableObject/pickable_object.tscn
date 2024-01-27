@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dujnx50c3sjq8"]
 
 [ext_resource type="Script" path="res://prefabs/pickableObject/pickable_object.gd" id="1_odmau"]
-[ext_resource type="Texture2D" uid="uid://w04p0gni23vo" path="res://choritest.png" id="2_clnk4"]
+[ext_resource type="Texture2D" uid="uid://w04p0gni23vo" path="res://sprites/choritest.png" id="2_6hwgy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_71p2p"]
 radius = 0.3
@@ -26,4 +26,4 @@ shape = SubResource("BoxShape3D_t72q4")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.276533, 0, 0, 0, 0.276533, 0, 0, 0, 0.276533, 0, 0, 0)
 billboard = 1
-texture = ExtResource("2_clnk4")
+texture = ExtResource("2_6hwgy")
