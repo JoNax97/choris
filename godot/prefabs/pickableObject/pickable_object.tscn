@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dujnx50c3sjq8"]
+[gd_scene load_steps=5 format=3 uid="uid://dujnx50c3sjq8"]
 
 [ext_resource type="Script" path="res://prefabs/pickableObject/pickable_object.gd" id="1_odmau"]
+[ext_resource type="Texture2D" uid="uid://w04p0gni23vo" path="res://choritest.png" id="2_clnk4"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_71p2p"]
+radius = 0.3
+height = 0.6
 
-[node name="pickable_object" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_oh7n6"]
+radius = 0.3
+
+[node name="pickable_object" type="RigidBody3D"]
+freeze_mode = 1
 script = ExtResource("1_odmau")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_71p2p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oh7n6")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.276533, 0, 0, 0, 0.276533, 0, 0, 0, 0.276533, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_clnk4")

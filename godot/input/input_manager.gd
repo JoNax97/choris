@@ -15,4 +15,7 @@ func add_device() -> int:
 
 func get_movement_dir(device: int) -> Vector2: 
 	return devices[device].get_vector("move_left", "move_right", "move_up", "move_down")
+	
+func is_action_button_pressed(device: int) -> bool:
+	return devices[device].is_action_just_pressed("interact")
 

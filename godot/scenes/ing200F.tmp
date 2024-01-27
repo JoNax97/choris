@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
-[ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="2_m5bu4"]
 [ext_resource type="PackedScene" uid="uid://c5t08tnwtjbie" path="res://prefabs/player_character.tscn" id="2_o1xo3"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 
@@ -27,6 +26,8 @@ albedo_color = Color(0.231373, 0.231373, 0.231373, 1)
 material = SubResource("StandardMaterial3D_8efmw")
 size = Vector2(20, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jat36"]
+
 [node name="IngameScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -50,59 +51,17 @@ mesh = SubResource("PlaneMesh_7nvhq")
 
 [node name="character" parent="." instance=ExtResource("2_o1xo3")]
 
+[node name="MeshInstance3D" parent="character/ModelPivot" index="0"]
+material_override = SubResource("StandardMaterial3D_jat36")
+
 [node name="character2" parent="." instance=ExtResource("2_o1xo3")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17253, 0, 1.71632)
-visible = false
 
 [node name="character3" parent="." instance=ExtResource("2_o1xo3")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17253, 0, -3.75953)
-visible = false
 
 [node name="character4" parent="." instance=ExtResource("2_o1xo3")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885049, 0, -3.75953)
-visible = false
-
-[node name="pickable_object" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.63722)
-
-[node name="pickable_object2" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01237, 0.4, 1.18142)
-
-[node name="pickable_object3" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31137, 0.4, -0.208284)
-
-[node name="pickable_object4" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79573, 0.4, 0.79154)
-
-[node name="pickable_object5" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771125, 0.4, -5.83798)
-
-[node name="pickable_object6" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8264, 0.4, -5.06884)
-
-[node name="pickable_object7" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00091, 0.4, -4.63038)
-
-[node name="pickable_object8" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59648, 0.4, -3.61924)
-
-[node name="pickable_object9" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53347, 0.4, 3.51967)
-
-[node name="pickable_object10" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51183, 0.4, 3.35511)
-
-[node name="pickable_object11" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51183, 0.4, 4.35511)
-
-[node name="pickable_object12" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.994782, 0.4, 2.51788)
-
-[node name="pickable_object13" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27323, 0.4, 3.48436)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -115,4 +74,5 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
+[editable path="character"]
 [editable path="character4"]

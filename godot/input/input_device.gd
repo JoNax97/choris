@@ -30,8 +30,11 @@ func _duplicate_action(base_action: String):
 			
 			InputMap.action_add_event(new_action, new_event)
 
-func  _add_suffix(action) -> StringName:
+func _add_suffix(action) -> StringName:
 	return action + _suffix
+
+func is_action_just_pressed(action: String) -> bool:
+	return Input.is_action_just_pressed(_add_suffix(action))
 
 func get_action_strength(action: String) -> float:
 	return Input.get_action_strength( _add_suffix(action))
