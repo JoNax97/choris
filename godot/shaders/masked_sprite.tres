@@ -7,7 +7,7 @@
 render_priority = 0
 shader = ExtResource("1_awr07")
 shader_parameter/key_color = Color(0, 1, 0, 1)
-shader_parameter/replacement_color = Color(1, 1, 1, 1)
+shader_parameter/replacement_color = Color(0.662745, 0.290196, 0.254902, 1)
 shader_parameter/similarity = 0.4
 shader_parameter/smoothness = 0.08
 shader_parameter/spill = 0.1

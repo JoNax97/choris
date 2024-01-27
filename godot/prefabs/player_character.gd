@@ -20,7 +20,7 @@ func _ready():
 	var mat_instance = sprite.material_override.duplicate()
 	sprite.material_override = mat_instance
 	mat_instance.set_shader_parameter("replacement_color", player_colors[player_idx])
-
+	%PlayerPhantomCamera3D.append_follow_group_node(self)
 
 func _physics_process(delta):
 

@@ -1,6 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=15 format=3 uid="uid://cik30de5gaaah"]
 
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
+[ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="2_grd80"]
 [ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="2_m5bu4"]
 [ext_resource type="PackedScene" uid="uid://c5t08tnwtjbie" path="res://prefabs/player_character.tscn" id="2_o1xo3"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
@@ -27,6 +30,9 @@ albedo_color = Color(0.231373, 0.231373, 0.231373, 1)
 material = SubResource("StandardMaterial3D_8efmw")
 size = Vector2(20, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulqt3"]
+albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
+
 [node name="IngameScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -36,9 +42,38 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e55lv")
 
+[node name="MainCamera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.999954, 0, 0, 0, 0.765943, 0.642742, 0, -0.642703, 0.76599, 7.23736, 14.1715, 16.5365)
+
+[node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
+script = ExtResource("1_0py0b")
+
+[node name="PlayerPhantomCamera3D" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.999954, 0, 0, 0, 0.765943, 0.642742, 0, -0.642703, 0.76599, 7.23736, 14.1715, 16.5365)
+script = ExtResource("2_grd80")
+priority_override = false
+priority = 5
+follow_mode = 3
+follow_group = Array[NodePath]([NodePath("")])
+follow_parameters/auto_distance = true
+follow_parameters/min_distance = 2.0
+follow_parameters/max_distance = 15.0
+follow_parameters/auto_distance_divisor = 20.0
+follow_parameters/target_offset = Vector3(0, 0, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 5.0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = false
+inactive_update_mode = 0
+camera_3D_resource = null
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.0176773, 18.7946, 32.5749)
-fov = 20.0
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 7.23736, 14.1715, 16.5365)
+visible = false
+fov = 30.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -46,7 +81,20 @@ fov = 20.0
 shape = SubResource("WorldBoundaryShape3D_eg86y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
 mesh = SubResource("PlaneMesh_7nvhq")
+
+[node name="Escenario" parent="StaticBody3D" instance=ExtResource("1_lbnxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210758, 0)
+
+[node name="Plane" parent="StaticBody3D/Escenario" index="0"]
+material_override = SubResource("StandardMaterial3D_ulqt3")
+
+[node name="Plane_001" parent="StaticBody3D/Escenario" index="1"]
+material_override = SubResource("StandardMaterial3D_ulqt3")
+
+[node name="Plane_002" parent="StaticBody3D/Escenario" index="2"]
+material_override = SubResource("StandardMaterial3D_ulqt3")
 
 [node name="character" parent="." instance=ExtResource("2_o1xo3")]
 
@@ -85,4 +133,5 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
+[editable path="StaticBody3D/Escenario"]
 [editable path="character4"]
