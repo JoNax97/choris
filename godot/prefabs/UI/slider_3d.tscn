@@ -48,6 +48,3 @@ value = 0.5
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_bc0wq")
 surface_material_override/0 = SubResource("StandardMaterial3D_315og")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://44vhj27joaiq"]
+
+[ext_resource type="PackedScene" uid="uid://cj45qswojp4sc" path="res://prefabs/WorkingArea/working_area.tscn" id="1_6o816"]
+[ext_resource type="Script" path="res://prefabs/WorkingArea/Implementations/TimerWorkingArea.gd" id="2_81pl1"]
+[ext_resource type="PackedScene" uid="uid://xrkb2oij570" path="res://prefabs/UI/slider_3d.tscn" id="3_sqp6h"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l7v8o"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q57s6"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_l7v8o")
+
+[node name="TimerWorkingArea" node_paths=PackedStringArray("slider") instance=ExtResource("1_6o816")]
+script = ExtResource("2_81pl1")
+slider = NodePath("Slider3D/SubViewport/Control/HSlider")
+
+[node name="Slider3D" parent="." index="3" instance=ExtResource("3_sqp6h")]
+transform = Transform3D(3.87009, 0, 0, 0, 3.87009, 0, 0, 0, 3.87009, 0, 1.67454, 0)
+
+[node name="MeshInstance3D" parent="Slider3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q57s6")
+
+[node name="Timer" type="Timer" parent="." index="4"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="InteractionArea"]
+[editable path="Slider3D"]
