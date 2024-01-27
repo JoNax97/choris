@@ -1,6 +1,7 @@
 class_name PickableObject extends RigidBody3D
 
 @export var object_type := ObjectType.EnumObjectType.unknown
+@export var object_name := "Pickable Object"
 
 var is_picked
 

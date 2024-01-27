@@ -2,6 +2,8 @@ class_name WorkingArea
 extends Node3D
 
 @export var object_type := ObjectType.EnumObjectType.unknown
+@export var area_name := "Working Area"
+@export var action_name := "Do Action"
 
 var isInUse : bool
 var pickable_object_in_use : PickableObject
@@ -42,6 +44,18 @@ func can_be_processed() -> bool:
 func process(step : float):
 	print("needing implementation")
 	
-func _on_interaction_area_closest_object_changed(prev, new):
-	if(can_put(new)):
+func _on_interaction_area_closest_object_changed(prev: PickableObject, new: PickableObject):
+	if(new and not new.is_picked and can_put(new)):
 		put(new)
+
+func _on_body_entered(body):
+	print(body)
+	var player = body as PlayerCharacter
+	if player and player.current_working_area == null: 
+		player.current_working_area = self
+
+func _on_body_exited(body):
+	print(body)
+	var player = body as PlayerCharacter
+	if player and player.current_working_area == self: 
+		player.current_working_area = null

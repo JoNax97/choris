@@ -39,7 +39,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5kwmd")
 transform = Transform3D(4.92678, 0, 0, 0, 4.92678, 0, 0, 0, 4.92678, 0, 2.16981, 0)
 
 [node name="MeshInstance3D" parent="Slider3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_0c68p")
 
 [node name="SpotLight3D" parent="Slider3D" index="2"]

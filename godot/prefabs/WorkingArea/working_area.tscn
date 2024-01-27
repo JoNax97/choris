@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj45qswojp4sc"]
+[gd_scene load_steps=11 format=3 uid="uid://cj45qswojp4sc"]
 
 [ext_resource type="PackedScene" uid="uid://bblw5evq071u" path="res://prefabs/interaction_area.tscn" id="1_3glqo"]
 
@@ -17,9 +17,32 @@ albedo_color = Color(0.811765, 0, 0.14902, 0.662745)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0cssd"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdqis"]
+
+[sub_resource type="GDScript" id="GDScript_7e0y3"]
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_body_entered(body):
+	print(body)
+	pass # Replace with function body.
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_c1x3r"]
+size = Vector3(1, 1, 2.26819)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8qb0c"]
+size = Vector3(1, 1, 2.28)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xafhk"]
 transparency = 1
@@ -41,16 +64,29 @@ surface_material_override/0 = SubResource("StandardMaterial3D_67ul6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.534927, 0)
 mesh = SubResource("BoxMesh_0cssd")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_bdqis")
+
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.79355)
+collision_mask = 2
+script = SubResource("GDScript_7e0y3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.267761)
 shape = SubResource("BoxShape3D_c1x3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.225586)
 mesh = SubResource("BoxMesh_8qb0c")
 surface_material_override/0 = SubResource("StandardMaterial3D_xafhk")
 
 [connection signal="closest_object_changed" from="InteractionArea" to="." method="_on_interaction_area_closest_object_changed"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]
 
 [editable path="InteractionArea"]

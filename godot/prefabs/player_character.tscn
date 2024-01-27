@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bblw5evq071u" path="res://prefabs/interaction_area.tscn" id="2_ul157"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5cmy"]
-radius = 1.0
+radius = 0.8
 
 [sub_resource type="QuadMesh" id="QuadMesh_b2gcn"]
 size = Vector2(2, 2)
@@ -32,6 +32,12 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="PickedObjectPivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39738, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00319, -0.485866)
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46165, -0.0866885)
+billboard = 1
+text = "E AMEO Y EL CHIMI?"
+font_size = 40
 
 [connection signal="closest_object_changed" from="InteractionArea" to="." method="_on_interaction_area_closest_object_changed"]

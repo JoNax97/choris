@@ -1,11 +1,13 @@
-extends CharacterBody3D
+class_name PlayerCharacter extends CharacterBody3D
 
 @export var speed = 500.0
 @export var acceleration = 50.0
 
 @onready var sprite : MeshInstance3D = $ModelPivot/MeshInstance3D
 @onready var interaction_area : InteractionArea = $InteractionArea
+@onready var label : Label3D = $Label
 
+var current_working_area : WorkingArea
 var picked_object: PickableObject
 
 var player_idx : int
@@ -25,6 +27,7 @@ func _ready():
 func _physics_process(delta):
 
 	_handle_movement(delta)
+	_handle_interaction_prompt()
 	_handle_interaction()
 
 func _handle_movement(delta):
@@ -44,18 +47,48 @@ func _handle_movement(delta):
 		velocity.y -= gravity * delta
 
 	move_and_slide()
+	
+func _handle_interaction_prompt():
+	var text = ""
+	
+	if current_working_area:
+		text += current_working_area.area_name
+		if picked_object and current_working_area.can_put(picked_object):
+			text += ": Poner %s" % picked_object.object_name
+		else: if not picked_object and current_working_area.can_pick():
+			text += ": Agarrar %s" % current_working_area.pickable_object_in_use
+		else: if current_working_area.can_process():
+			text += ": %s" % current_working_area.action_name
+	else:
+		text = "NO AREA"
+	
+	label.text = text
 
 func _handle_interaction():
-	if InputManager.is_action_button_pressed(player_idx):
-		if picked_object:
-			picked_object.drop()
+	if not InputManager.is_action_button_pressed(player_idx):
+		return
+	
+	if current_working_area:
+		if picked_object and current_working_area.can_put(picked_object):
+			current_working_area.put(picked_object)
 			picked_object = null
-			return
 		
-		var obj = interaction_area.closest_object
-		if obj and not obj.is_picked:
-			picked_object = obj
-			obj.pick($PickedObjectPivot)
+		else: if not picked_object and current_working_area.can_pick():
+			picked_object = current_working_area.pick()
+			picked_object.pick($PickedObjectPivot)
+
+		else: if current_working_area.can_process():
+			current_working_area.process(0.1)
+		
+	if picked_object:
+		picked_object.drop()
+		picked_object = null
+		return
+	
+	var obj = interaction_area.closest_object
+	if obj and not obj.is_picked:
+		picked_object = obj
+		obj.pick($PickedObjectPivot)
 
 func _on_interaction_area_closest_object_changed(prev, new):
 	if picked_object:

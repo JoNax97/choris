@@ -141,10 +141,19 @@ use_collision = true
 flip_faces = true
 size = Vector3(30.1664, 3.07336, 15.5504)
 
-[node name="HoldingWorkingArea" parent="." node_paths=PackedStringArray("slider") instance=ExtResource("5_fduw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1285, -0.0910002, -1.95076)
+[node name="HoldingWorkingArea" parent="." instance=ExtResource("5_fduw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1285, 0.208444, -1.95076)
 hold_duration = 10.0
-slider = NodePath("Slider3D/SubViewport/Control/HSlider")
+
+[node name="Area3D" parent="HoldingWorkingArea" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
+script = null
+
+[node name="CollisionShape3D" parent="HoldingWorkingArea/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="HoldingWorkingArea/Area3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="HoldingWorkingArea/Slider3D" index="1"]
 transform = Transform3D(0.999964, 0, 0, 0, 0.999964, 0, 0, 0, 0.999964, 0, 0, 0)
