@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://dujnx50c3sjq8"]
+[gd_scene load_steps=3 format=3 uid="uid://dujnx50c3sjq8"]
+
+[ext_resource type="Script" path="res://prefabs/pickableObject/pickable_object.gd" id="1_odmau"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_71p2p"]
 
 [node name="pickable_object" type="Node3D"]
+script = ExtResource("1_odmau")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_71p2p")

@@ -13,12 +13,15 @@ config_version=5
 config/name="MyGame"
 run/main_scene="res://scenes/ingame_scene.tscn"
 config/features=PackedStringArray("4.2")
+boot_splash/show_image=false
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
 
 UserSettings="*res://settings/user_settings.gd"
 InputManager="*res://input/input_manager.gd"
+ObjectType="*res://prefabs/pickableObject/ObjectType.gd"
 
 [display]
 
@@ -28,6 +31,7 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+window/fullsize=true
 
 [gui]
 

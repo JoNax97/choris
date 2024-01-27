@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj45qswojp4sc"]
+[gd_scene load_steps=4 format=3 uid="uid://cj45qswojp4sc"]
+
+[ext_resource type="Script" path="res://prefabs/actionArea/action_area.gd" id="1_bt2pq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mpqxo"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_p1yr5"]
+
 [node name="ActionArea" type="Area3D"]
+script = ExtResource("1_bt2pq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_mpqxo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_p1yr5")

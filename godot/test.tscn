@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckduokxrls8ux"]
+
+[ext_resource type="PackedScene" uid="uid://cj45qswojp4sc" path="res://prefabs/actionArea/action_area.tscn" id="1_u36al"]
+[ext_resource type="PackedScene" uid="uid://dinorknxbabyo" path="res://prefabs/Thrower/thrower.tscn" id="2_b77wm"]
+[ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="3_r31p3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ActionArea" parent="." instance=ExtResource("1_u36al")]
+object_type = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="Thrower" parent="." instance=ExtResource("2_b77wm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47424, 0, 0)
+
+[node name="pickable_object" parent="." instance=ExtResource("3_r31p3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.36026, 0, -2.22936)
+object_type = 1
