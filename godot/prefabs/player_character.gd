@@ -5,8 +5,8 @@ extends CharacterBody3D
 
 @onready var meshInstance : MeshInstance3D = $ModelPivot/MeshInstance3D
 @onready var interaction_area : InteractionArea = $InteractionArea
-@onready var audio_stream_player_3d : AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+var picked_object: PickableObject
 
 var player_idx : int
 
@@ -24,8 +24,10 @@ func _ready():
 
 func _physics_process(delta):
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	_handle_movement(delta)
+	_handle_interaction()
+
+func _handle_movement(delta):
 	var input_dir = InputManager.get_movement_dir(player_idx)
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
 	var frame_accel = acceleration * delta
@@ -42,18 +44,28 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	move_and_slide()
-	
+
+func _handle_interaction():
 	if InputManager.is_action_button_pressed(player_idx):
+		if picked_object:
+			picked_object.drop()
+			picked_object = null
+			return
+		
 		var obj = interaction_area.closest_object
-		if obj:
-			obj.reparent($PickedObjectPivot, false)
-			obj.position = Vector3.ZERO
-			obj.freeze = true
-			if not audio_stream_player_3d.playing:
-				audio_stream_player_3d.play()
+		if obj and not obj.is_picked:
+			picked_object = obj
+			obj.pick($PickedObjectPivot)
 
 func _on_interaction_area_closest_object_changed(prev, new):
+	if picked_object:
+		return
+	
 	if prev: 
 		prev.scale = Vector3.ONE
-	if new: 
+	if new and not new.is_picked: 
 		new.scale = Vector3.ONE * 1.2
+		
+func pick_object():
+	picked_object.repa
+	

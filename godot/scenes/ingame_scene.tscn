@@ -71,38 +71,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.63722)
 [node name="pickable_object2" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01237, 0.4, 1.18142)
 
-[node name="pickable_object3" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31137, 0.4, -0.208284)
-
-[node name="pickable_object4" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79573, 0.4, 0.79154)
-
 [node name="pickable_object5" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771125, 0.4, -5.83798)
-
-[node name="pickable_object6" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8264, 0.4, -5.06884)
-
-[node name="pickable_object7" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00091, 0.4, -4.63038)
 
 [node name="pickable_object8" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59648, 0.4, -3.61924)
 
 [node name="pickable_object9" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53347, 0.4, 3.51967)
-
-[node name="pickable_object10" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51183, 0.4, 3.35511)
-
-[node name="pickable_object11" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51183, 0.4, 4.35511)
-
-[node name="pickable_object12" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.994782, 0.4, 2.51788)
-
-[node name="pickable_object13" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27323, 0.4, 3.48436)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

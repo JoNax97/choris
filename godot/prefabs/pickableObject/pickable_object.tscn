@@ -7,10 +7,11 @@
 radius = 0.3
 height = 0.6
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_oh7n6"]
-radius = 0.3
+[sub_resource type="BoxShape3D" id="BoxShape3D_t72q4"]
+size = Vector3(1, 0.537842, 0.584961)
 
 [node name="pickable_object" type="RigidBody3D"]
+collision_layer = 4
 freeze_mode = 1
 script = ExtResource("1_odmau")
 
@@ -19,7 +20,8 @@ visible = false
 mesh = SubResource("SphereMesh_71p2p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_oh7n6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0108643, 0)
+shape = SubResource("BoxShape3D_t72q4")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.276533, 0, 0, 0, 0.276533, 0, 0, 0, 0.276533, 0, 0, 0)
