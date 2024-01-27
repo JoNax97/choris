@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dujnx50c3sjq8"]
+
+[node name="pickable_object" type="Node3D"]
