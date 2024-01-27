@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=14 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="2_m5bu4"]
 [ext_resource type="PackedScene" uid="uid://c5t08tnwtjbie" path="res://prefabs/player_character.tscn" id="2_o1xo3"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3D_resource.gd" id="3_gw6tp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,14 +22,12 @@ sky = SubResource("Sky_uk6kh")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_eg86y"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8efmw"]
-albedo_color = Color(0.231373, 0.231373, 0.231373, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7nvhq"]
-material = SubResource("StandardMaterial3D_8efmw")
-size = Vector2(20, 20)
+[sub_resource type="Resource" id="Resource_ge2gr"]
+script = ExtResource("3_gw6tp")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+fov = 30.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulqt3"]
 albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
@@ -45,6 +44,7 @@ environment = SubResource("Environment_e55lv")
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.999954, 0, 0, 0, 0.765943, 0.642742, 0, -0.642703, 0.76599, 7.23736, 14.1715, 16.5365)
+fov = 30.0
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 script = ExtResource("1_0py0b")
@@ -58,42 +58,28 @@ priority = 5
 follow_mode = 3
 follow_group = Array[NodePath]([NodePath("")])
 follow_parameters/auto_distance = true
-follow_parameters/min_distance = 2.0
-follow_parameters/max_distance = 15.0
+follow_parameters/min_distance = 15.0
+follow_parameters/max_distance = 30.0
 follow_parameters/auto_distance_divisor = 20.0
 follow_parameters/target_offset = Vector3(0, 0, 0)
 follow_parameters/damping = true
-follow_parameters/damping_value = 5.0
+follow_parameters/damping_value = 2.0
 look_at_mode = 0
 tween_parameters = null
 tween_on_load = false
 inactive_update_mode = 0
-camera_3D_resource = null
+camera_3D_resource = SubResource("Resource_ge2gr")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 7.23736, 14.1715, 16.5365)
-visible = false
-fov = 30.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_eg86y")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-visible = false
-mesh = SubResource("PlaneMesh_7nvhq")
-
-[node name="Escenario" parent="StaticBody3D" instance=ExtResource("1_lbnxr")]
+[node name="Escenario" parent="." instance=ExtResource("1_lbnxr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210758, 0)
 
-[node name="Plane" parent="StaticBody3D/Escenario" index="0"]
+[node name="Plane" parent="Escenario" index="0"]
 material_override = SubResource("StandardMaterial3D_ulqt3")
 
-[node name="Plane_001" parent="StaticBody3D/Escenario" index="1"]
+[node name="Plane_001" parent="Escenario" index="1"]
 material_override = SubResource("StandardMaterial3D_ulqt3")
 
-[node name="Plane_002" parent="StaticBody3D/Escenario" index="2"]
+[node name="Plane_002" parent="Escenario" index="2"]
 material_override = SubResource("StandardMaterial3D_ulqt3")
 
 [node name="character" parent="." instance=ExtResource("2_o1xo3")]
@@ -133,5 +119,12 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
-[editable path="StaticBody3D/Escenario"]
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99579, 1.44568, 1.82314)
+visible = false
+use_collision = true
+flip_faces = true
+size = Vector3(30.1664, 3.07336, 15.5504)
+
+[editable path="Escenario"]
 [editable path="character4"]
