@@ -41,6 +41,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ka6y5")
+max_value = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_bc0wq")

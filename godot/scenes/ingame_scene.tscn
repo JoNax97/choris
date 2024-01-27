@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=17 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5t08tnwtjbie" path="res://prefabs/player_character.tscn" id="2_o1xo3"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3D_resource.gd" id="3_gw6tp"]
+[ext_resource type="PackedScene" uid="uid://duvenievjg3vb" path="res://prefabs/WorkingArea/Implementations/holding_working_area.tscn" id="5_fduw6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,6 +32,15 @@ fov = 30.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulqt3"]
 albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g07vj"]
+viewport_path = NodePath("HoldingWorkingArea/Slider3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwh6s"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_g07vj")
 
 [node name="IngameScene" type="Node3D"]
 
@@ -95,18 +105,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885049, 0, -3.75953)
 
 [node name="pickable_object" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.63722)
+object_type = 1
 
 [node name="pickable_object2" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01237, 0.4, 1.18142)
+object_type = 1
 
 [node name="pickable_object5" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771125, 0.4, -5.83798)
+object_type = 1
 
 [node name="pickable_object8" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59648, 0.4, -3.61924)
+object_type = 1
 
 [node name="pickable_object9" parent="." instance=ExtResource("2_m5bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53347, 0.4, 3.51967)
+object_type = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -126,5 +141,17 @@ use_collision = true
 flip_faces = true
 size = Vector3(30.1664, 3.07336, 15.5504)
 
+[node name="HoldingWorkingArea" parent="." node_paths=PackedStringArray("slider") instance=ExtResource("5_fduw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1285, -0.0910002, -1.95076)
+hold_duration = 10.0
+slider = NodePath("Slider3D/SubViewport/Control/HSlider")
+
+[node name="MeshInstance3D" parent="HoldingWorkingArea/Slider3D" index="1"]
+transform = Transform3D(0.999964, 0, 0, 0, 0.999964, 0, 0, 0, 0.999964, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_mwh6s")
+
 [editable path="Escenario"]
 [editable path="character4"]
+[editable path="HoldingWorkingArea"]
+[editable path="HoldingWorkingArea/InteractionArea"]
+[editable path="HoldingWorkingArea/Slider3D"]

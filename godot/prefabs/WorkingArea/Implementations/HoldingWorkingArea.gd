@@ -2,6 +2,7 @@ class_name HoldingWorkingArea
 extends WorkingArea
 
 @export var hold_duration : float
+@export var slider : HSlider
 
 var elapsed_time : float # use for update the ui
 var is_processing : bool
@@ -24,6 +25,10 @@ func _put_intern_holding():
 
 func process(step : float):
 	elapsed_time += step
+	
+	var slider_value : float 
+	slider_value = inverse_lerp(0, 180, elapsed_time)
+	slider.value = slider_value
 	
 	if(elapsed_time >= hold_duration):
 		is_processing = false
