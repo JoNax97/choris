@@ -1,20 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckduokxrls8ux"]
+[gd_scene load_steps=5 format=3 uid="uid://ckduokxrls8ux"]
 
-[ext_resource type="PackedScene" uid="uid://cj45qswojp4sc" path="res://prefabs/actionArea/action_area.tscn" id="1_u36al"]
-[ext_resource type="PackedScene" uid="uid://dinorknxbabyo" path="res://prefabs/Thrower/thrower.tscn" id="2_b77wm"]
-[ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="3_r31p3"]
+[ext_resource type="Script" path="res://test.gd" id="1_1sbnm"]
+[ext_resource type="Script" path="res://prefabs/WorkingArea/Implementations/PutWorkingArea.gd" id="1_fknhg"]
+[ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="3_l3o1r"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_l8jw1"]
 
-[node name="ActionArea" parent="." instance=ExtResource("1_u36al")]
-object_type = 1
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("pickable", "working_area")]
+script = ExtResource("1_1sbnm")
+pickable = NodePath("pickable_object")
+working_area = NodePath("PuttableWorkingArea")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
-[node name="Thrower" parent="." instance=ExtResource("2_b77wm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47424, 0, 0)
-
-[node name="pickable_object" parent="." instance=ExtResource("3_r31p3")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.36026, 0, -2.22936)
+[node name="PuttableWorkingArea" type="Node3D" parent="." node_paths=PackedStringArray("object_position")]
+script = ExtResource("1_fknhg")
+object_position = NodePath("Node3D")
 object_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuttableWorkingArea"]
+mesh = SubResource("BoxMesh_l8jw1")
+
+[node name="Node3D" type="Node3D" parent="PuttableWorkingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50224, 0)
+
+[node name="pickable_object" parent="." instance=ExtResource("3_l3o1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35636, 0, 0)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 16.0

@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://prefabs/Thrower/thrower.gd" id="1_85qq0"]
 
-[node name="Thrower" type="Area3D" node_paths=PackedStringArray("throw_point")]
+[node name="Thrower" type="Area3D"]
 script = ExtResource("1_85qq0")
-throw_point = NodePath("throw_point")
+throw_point = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0075376, 0.997381, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
+
 
 [node name="throw_point" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0075376, 0.997381, 0)

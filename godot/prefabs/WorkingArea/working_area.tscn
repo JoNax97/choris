@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj45qswojp4sc"]
+
+[ext_resource type="PackedScene" path="res://prefabs/interaction_area.tscn" id="1_3glqo"]
+[ext_resource type="Script" path="res://prefabs/WorkingArea/working_area.gd" id="1_bt2pq"]
+
+[node name="WorkingArea" type="Node3D"]
+script = ExtResource("1_bt2pq")
+
+[node name="InteractionArea" parent="." instance=ExtResource("1_3glqo")]
+
+[connection signal="closest_object_changed" from="InteractionArea" to="." method="_on_interaction_area_closest_object_changed"]
