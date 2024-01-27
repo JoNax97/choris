@@ -16,7 +16,10 @@ func _can_put_intern(pickable_object : Node3D) -> bool:
 	return true
 	
 func _is_valid_pickable(pickable_object : Node3D) -> bool:
-	return pickable_object.object_type == pickable_object_in_use.object_type
+	if(pickable_object_in_use != null):
+		return pickable_object.object_type == pickable_object_in_use.object_type
+	else:
+		return true
 
 func put(pickable_object : Node3D):
 	pickable_object_in_use = pickable_object

@@ -1,5 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://duvenievjg3vb"]
+[gd_scene load_steps=8 format=3 uid="uid://duvenievjg3vb"]
 
 [ext_resource type="PackedScene" uid="uid://cj45qswojp4sc" path="res://prefabs/WorkingArea/working_area.tscn" id="1_jhprw"]
+[ext_resource type="Script" path="res://prefabs/WorkingArea/Implementations/HoldingWorkingArea.gd" id="2_wn72p"]
+[ext_resource type="PackedScene" uid="uid://xrkb2oij570" path="res://prefabs/UI/slider_3d.tscn" id="3_8752o"]
 
-[node name="WorkingHoldingArea" instance=ExtResource("1_jhprw")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_duair"]
+radius = 0.595982
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kwmd"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.054902)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_amac5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c68p"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_amac5")
+
+[node name="HoldingWorkingArea" instance=ExtResource("1_jhprw")]
+script = ExtResource("2_wn72p")
+object_type = 1
+
+[node name="InteractionArea" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0407653, 3.15714, 0)
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.908198, 0)
+shape = SubResource("CylinderShape3D_duair")
+
+[node name="MeshInstance3D" parent="InteractionArea" index="1"]
+transform = Transform3D(0.637536, 0, 0, 0, 0.637536, 0, 0, 0, 0.637536, 0, -0.755111, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_5kwmd")
+
+[node name="Slider3D" parent="." index="3" instance=ExtResource("3_8752o")]
+transform = Transform3D(4.92678, 0, 0, 0, 4.92678, 0, 0, 0, 4.92678, 0, 2.16981, 0)
+
+[node name="MeshInstance3D" parent="Slider3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0c68p")
+
+[node name="SpotLight3D" parent="Slider3D" index="2"]
+visible = false
+
+[editable path="InteractionArea"]
+[editable path="Slider3D"]
