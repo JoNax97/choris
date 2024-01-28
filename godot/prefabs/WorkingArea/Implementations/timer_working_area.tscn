@@ -15,7 +15,10 @@ area_name = "Timer"
 action_name = "Wait to finish"
 
 [node name="Slider3D" parent="." index="0" instance=ExtResource("3_h0y1r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88565, 0)
+transform = Transform3D(1, 0, 0, 0, 0.925587, 0.378536, 0, -0.378536, 0.925587, 0, 1.88565, 0)
+
+[node name="InteractionArea" parent="." index="1"]
+visible = false
 
 [node name="Timer" type="Timer" parent="." index="4"]
 
@@ -25,13 +28,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16928, 0)
 [node name="Result_position" type="Node3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16928, 0)
 
-[node name="Label3D" type="Label3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6491, 0)
+[node name="Labeleees" type="Node3D" parent="." index="7"]
+
+[node name="Label3D" type="Label3D" parent="Labeleees" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.884614, 0.466325, 0, -0.466325, 0.884614, 0, 2.6283, -0.0840737)
 text = "Timer Working Area"
 
-[node name="Label3D2" type="Label3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28852, 0)
-text = "Press \"A\" and wait"
+[node name="Label3D2" type="Label3D" parent="Labeleees" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.884614, 0.466325, 0, -0.466325, 0.884614, 0, 2.30932, 0.0840737)
+text = "Presiona \"A\" y espera que termine"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
