@@ -12,11 +12,19 @@ signal order_received
 @onready var label : Label3D = $Label
 @onready var object_pivot: Node3D = $Pivot
 @onready var sfx_player = $SfxPlayer
+@onready var sprite : AnimatedSprite3D = $ModelPivot/Sprite
 
 @export var rat: ObjectTags
 
 var can_interact = false
 var order_correct: bool
+
+func _ready():
+	var color = Color.from_hsv((randi() % 16) / 16.0, randf_range(0, 1), randf_range(0, 1))	
+	var mat_instance = sprite.material_override.duplicate()
+	sprite.material_override = mat_instance
+	mat_instance.set_shader_parameter("replacement_color", color)
+
 
 func idle_chatter():
 	while true:

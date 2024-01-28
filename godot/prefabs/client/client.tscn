@@ -1,17 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://pk64adkf2dgn"]
+[gd_scene load_steps=13 format=3 uid="uid://pk64adkf2dgn"]
 
 [ext_resource type="Script" path="res://prefabs/client/client.gd" id="1_lnpru"]
-[ext_resource type="Texture2D" uid="uid://kotvcs7vfil4" path="res://sprites/cliente.png" id="1_yi8qw"]
 [ext_resource type="Resource" uid="uid://bgu5wrtxgbamx" path="res://data/objects/choripan.tres" id="2_0f1jt"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="3_1dtpd"]
 [ext_resource type="AudioStream" uid="uid://bn757wk8rauma" path="res://music/Sound/SFX_Good.ogg" id="3_ybv8f"]
 [ext_resource type="AudioStream" uid="uid://csnjqjfx6vfk4" path="res://music/Sound/SFX_Wrong.ogg" id="4_xxh6v"]
+[ext_resource type="Shader" path="res://shaders/sprite_shader.gdshader" id="6_3bnae"]
+[ext_resource type="Texture2D" uid="uid://bxfme1vbkn165" path="res://sprites/NPC.png" id="7_v33vm"]
+[ext_resource type="SpriteFrames" uid="uid://dur2ssp614xqd" path="res://sprites/client_anim.tres" id="8_p1i8d"]
 
 [sub_resource type="Resource" id="Resource_4dy2m"]
 script = ExtResource("3_1dtpd")
 value = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvsgq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mxmd"]
+render_priority = 0
+shader = ExtResource("6_3bnae")
+shader_parameter/y_billboard = false
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/replacement_color = Color(0.188235, 0.505882, 0.85098, 1)
+shader_parameter/similarity = 0.4
+shader_parameter/smoothness = 0.08
+shader_parameter/spill = 0.127
+shader_parameter/tex = ExtResource("7_v33vm")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xbire"]
 radius = 1.41672
@@ -27,11 +40,15 @@ rat = SubResource("Resource_4dy2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_tvsgq")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0.7, 0)
-pixel_size = 0.006
-billboard = 1
-texture = ExtResource("1_yi8qw")
+[node name="ModelPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999809, 0.0195639, 0, -0.0195639, 0.999809, 0, 0, 0)
+
+[node name="Sprite" type="AnimatedSprite3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00104, 0.019588)
+material_override = SubResource("ShaderMaterial_7mxmd")
+pixel_size = 0.0045
+sprite_frames = ExtResource("8_p1i8d")
+animation = &"idle"
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 UserSettings="*res://settings/user_settings.gd"
 InputManager="*res://input/input_manager.gd"
 ObjectDataSource="*res://data/object_data_source.gd"
+Music="res://music/music.tscn"
 
 [display]
 

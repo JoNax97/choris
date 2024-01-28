@@ -1,0 +1,61 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dur2ssp614xqd"]
+
+[ext_resource type="Texture2D" uid="uid://bxfme1vbkn165" path="res://sprites/NPC.png" id="1_tady8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lygw0"]
+atlas = ExtResource("1_tady8")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yed52"]
+atlas = ExtResource("1_tady8")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmvre"]
+atlas = ExtResource("1_tady8")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpmxx"]
+atlas = ExtResource("1_tady8")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huuwn"]
+atlas = ExtResource("1_tady8")
+region = Rect2(1024, 0, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lygw0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yed52")
+}],
+"loop": true,
+"name": &"idle_angry",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmvre")
+}],
+"loop": true,
+"name": &"idle_happy",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpmxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huuwn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c48nexw1cqrvy"]
+
+[ext_resource type="AudioStream" uid="uid://bo2in5tnet63" path="res://music/Sound/Music_Cumbia_Chori.ogg" id="1_svpbl"]
+
+[node name="Music" type="Node"]
+process_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_svpbl")
+volume_db = -6.0
+autoplay = true
