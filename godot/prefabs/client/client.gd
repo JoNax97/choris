@@ -51,12 +51,16 @@ func give_object(obj: PickableObject):
 	sfx_player.stream = right_sfx if order_correct else wrong_sfx
 	sfx_player.play()
 	
+	var anim = "idle_happy" if order_correct else "idle_angry"
+	sprite.play(anim)
+	
 	if obj.data.tags.includes(rat):
 		label.text = "QUE ASCO LA PUTA MADRE!"
 	else:
 		label.text = responses_right.pick_random() if order_correct else responses_wrong.pick_random()
-	await get_tree().create_timer(0.7).timeout
+	
 	obj.queue_free()
+	await get_tree().create_timer(1.5).timeout
 	order_received.emit()
 	
 func leave(pos: Node3D):
@@ -73,7 +77,9 @@ func say_exit_phrase():
 func _move_to(pos: Node3D):
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", pos.global_position, global_position.distance_to(pos.global_position) / speed)
+	sprite.play("walk")
 	await tween.finished
+	sprite.play("idle")
 
 func _on_body_entered(body):
 	var player = body as PlayerCharacter

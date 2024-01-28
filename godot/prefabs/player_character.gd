@@ -6,7 +6,6 @@ class_name PlayerCharacter extends CharacterBody3D
 @export var interact_sfx: AudioStream
 @export var rat_kill_sfx: AudioStream
 
-
 @onready var sprite : AnimatedSprite3D = $ModelPivot/Sprite
 @onready var interaction_area : InteractionArea = $InteractionArea
 @onready var label : Label3D = $Label
@@ -74,7 +73,7 @@ func _handle_interaction_prompt():
 			text = "Poner %s en %s" % [picked_object.data.name, current_working_area.area_name]
 		else: if not picked_object and current_working_area.can_pick():
 			text = "Agarrar %s de %s" % [current_working_area.pickable_object_in_use.data.name, current_working_area.area_name]
-		else: if current_working_area.can_process():
+		else: if not picked_object and current_working_area.can_process():
 			text = current_working_area.action_name
 		else:
 			text = current_working_area.area_name
@@ -115,6 +114,17 @@ func _handle_interaction():
 			picked_object = null
 		return
 		
+	if picked_object:
+		picked_object.drop()
+		picked_object = null
+		return
+	
+	var obj = interaction_area.closest_object
+	if is_instance_valid(obj) and not obj.is_picked:
+		picked_object = obj
+		obj.pick($PickedObjectPivot)
+		return
+		
 	if current_rat && !current_rat.is_picked:
 		if !picked_object:
 			_interaction_anim(rat_kill_sfx)
@@ -125,17 +135,6 @@ func _handle_interaction():
 				picked_object.show()
 				picked_object.pick($PickedObjectPivot)
 				picked_object.scale = Vector3.ONE
-		return
-		
-	if picked_object:
-		picked_object.drop()
-		picked_object = null
-		return
-	
-	var obj = interaction_area.closest_object
-	if obj and not obj.is_picked:
-		picked_object = obj
-		obj.pick($PickedObjectPivot)
 		return
 	
 	_interaction_anim(interact_sfx)
