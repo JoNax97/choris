@@ -56,6 +56,7 @@ text = "E AMEO Y EL CHIMI?"
 font_size = 40
 
 [node name="SfxPlayer" type="AudioStreamPlayer3D" parent="."]
+volume_db = 4.0
 max_polyphony = 2
 
 [connection signal="closest_object_changed" from="InteractionArea" to="." method="_on_interaction_area_closest_object_changed"]

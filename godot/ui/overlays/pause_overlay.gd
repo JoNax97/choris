@@ -25,7 +25,7 @@ func _resume() -> void:
 	
 func _settings() -> void:
 	menu_container.visible = false
-	settings_container.visible = true
+	get_tree().reload_current_scene()
 	back_button.grab_focus()
 	
 func _exit() -> void:
