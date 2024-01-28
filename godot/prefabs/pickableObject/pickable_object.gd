@@ -1,7 +1,8 @@
 class_name PickableObject extends RigidBody3D
 
-@export var object_type := ObjectType.EnumObjectType.unknown
-@export var object_name := "Pickable Object"
+@onready var sprite = $Sprite3D
+
+var data: ObjectData : set = _set_data
 
 var is_picked
 
@@ -19,3 +20,10 @@ func drop():
 	freeze = false
 	await get_tree().create_timer(0.7).timeout
 	is_picked = false
+	
+func add_tags(tags: ObjectTags):
+	pass
+
+func _set_data(d: ObjectData):
+	data = d
+	sprite.texture = data.sprite

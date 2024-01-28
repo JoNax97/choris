@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ObjectData" load_steps=3 format=3 uid="uid://bgu5wrtxgbamx"]
+
+[ext_resource type="Script" path="res://data/object_data.gd" id="1_lwxey"]
+[ext_resource type="Texture2D" uid="uid://w04p0gni23vo" path="res://sprites/choritest.png" id="2_x0sdb"]
+
+[resource]
+script = ExtResource("1_lwxey")
+flags = 22
+name = "Choripan con Chimi"
+sprite = ExtResource("2_x0sdb")

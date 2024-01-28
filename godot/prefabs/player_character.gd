@@ -54,7 +54,7 @@ func _handle_interaction_prompt():
 	if current_working_area:
 		text += current_working_area.area_name
 		if picked_object and current_working_area.can_put(picked_object):
-			text += ": Poner %s" % picked_object.object_name
+			text += ": Poner %s" % picked_object.data.name
 		else: if not picked_object and current_working_area.can_pick():
 			text += ": Agarrar %s" % current_working_area.pickable_object_in_use
 		else: if current_working_area.can_process():

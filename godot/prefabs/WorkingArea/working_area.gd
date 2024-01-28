@@ -1,7 +1,7 @@
 class_name WorkingArea
 extends Node3D
 
-@export var object_type := ObjectType.EnumObjectType.unknown
+@export var allowed_tags := ObjectTags.new()
 @export var area_name := "Working Area"
 @export var action_name := "Do Action"
 
@@ -19,7 +19,9 @@ func _can_put_intern(pickable_object : Node3D) -> bool:
 	
 func _is_valid_pickable(pickable_object : Node3D) -> bool:
 	if(pickable_object_in_use != null):
-		return pickable_object.object_type == pickable_object_in_use.object_type
+		# compare the object tags
+		#return pickable_object.object_type == pickable_object_in_use.object_type
+		return false
 	else:
 		return true
 
@@ -36,7 +38,9 @@ func can_pick() -> bool:
 	return true
 	
 func pick() -> PickableObject:
-	return pickable_object_in_use
+	var obj = pickable_object_in_use
+	pickable_object_in_use = null
+	return obj
 	
 func can_be_processed() -> bool:
 	print("needing implementation")

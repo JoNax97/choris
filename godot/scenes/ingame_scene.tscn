@@ -1,15 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=22 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
+[ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_vonjy"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="2_grd80"]
-[ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="2_m5bu4"]
 [ext_resource type="PackedScene" uid="uid://c5t08tnwtjbie" path="res://prefabs/player_character.tscn" id="2_o1xo3"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3D_resource.gd" id="3_gw6tp"]
 [ext_resource type="PackedScene" uid="uid://duvenievjg3vb" path="res://prefabs/WorkingArea/Implementations/holding_working_area.tscn" id="5_fduw6"]
-[ext_resource type="Material" uid="uid://b4wvmi4q03md1" path="res://prefabs/slider.tres" id="10_rsvco"]
+[ext_resource type="PackedScene" uid="uid://41g1o0rp0a53" path="res://prefabs/object_spawner/object_spawner.tscn" id="7_blyaf"]
+[ext_resource type="Resource" uid="uid://bgu5wrtxgbamx" path="res://data/objects/chori_chimi.tres" id="8_7433l"]
+[ext_resource type="Material" uid="uid://ckxy0vcwrrjew" path="res://prefabs/slider.tres" id="10_rsvco"]
+[ext_resource type="Script" path="res://data/object_tags.gd" id="13_e113x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,7 +37,34 @@ fov = 30.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulqt3"]
 albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
 
+[sub_resource type="GDScript" id="GDScript_hkgik"]
+script/source = "extends Node
+
+@export var chori = ObjectTags.new()
+@export var chori_mayo = ObjectTags.new()
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(\"Chori equals chori_mayo: %s\" % (chori.equals(chori_mayo)))
+	print(\"chori_mayo includes chori: %s\" % (chori_mayo.includes(chori)))
+	print(\"chori includes chori_mayo: %s\" % (chori.includes(chori_mayo)))
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Resource" id="Resource_p15jc"]
+script = ExtResource("13_e113x")
+value = 6
+
+[sub_resource type="Resource" id="Resource_sm5e8"]
+script = ExtResource("13_e113x")
+value = 14
+
 [node name="IngameScene" type="Node3D"]
+script = ExtResource("1_vonjy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -95,25 +125,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17253, 0, -3.75953)
 [node name="character4" parent="." instance=ExtResource("2_o1xo3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885049, 0, -3.75953)
 
-[node name="pickable_object" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.63722)
-object_type = 1
+[node name="ObjectSpawner" parent="." instance=ExtResource("7_blyaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0)
+object_data = ExtResource("8_7433l")
 
-[node name="pickable_object2" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01237, 0.4, 1.18142)
-object_type = 1
-
-[node name="pickable_object5" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771125, 0.4, -5.83798)
-object_type = 1
-
-[node name="pickable_object8" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59648, 0.4, -3.61924)
-object_type = 1
-
-[node name="pickable_object9" parent="." instance=ExtResource("2_m5bu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53347, 0.4, 3.51967)
-object_type = 1
+[node name="AutospawnTimer" parent="ObjectSpawner" index="0"]
+wait_time = 3.0
+autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -152,8 +170,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(0.999964, 0, 0, 0, 0.999964, 0, 0, 0, 0.999964, 0, 0, 0)
 surface_material_override/0 = ExtResource("10_rsvco")
 
+[node name="Node" type="Node" parent="."]
+script = SubResource("GDScript_hkgik")
+chori = SubResource("Resource_p15jc")
+chori_mayo = SubResource("Resource_sm5e8")
+
 [editable path="Escenario"]
 [editable path="character4"]
+[editable path="ObjectSpawner"]
 [editable path="HoldingWorkingArea"]
 [editable path="HoldingWorkingArea/InteractionArea"]
 [editable path="HoldingWorkingArea/Slider3D"]
