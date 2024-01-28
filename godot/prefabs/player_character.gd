@@ -75,10 +75,14 @@ func _handle_interaction():
 		
 		else: if not picked_object and current_working_area.can_pick():
 			picked_object = current_working_area.pick()
+			picked_object.show()
+			picked_object.is_picked = false
 			picked_object.pick($PickedObjectPivot)
 
 		else: if current_working_area.can_process():
 			current_working_area.process(0.1)
+			
+		return
 		
 	if picked_object:
 		picked_object.drop()

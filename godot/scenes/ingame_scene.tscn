@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=21 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://duvenievjg3vb" path="res://prefabs/WorkingArea/Implementations/holding_working_area.tscn" id="5_fduw6"]
 [ext_resource type="PackedScene" uid="uid://41g1o0rp0a53" path="res://prefabs/object_spawner/object_spawner.tscn" id="7_blyaf"]
 [ext_resource type="Resource" uid="uid://bgu5wrtxgbamx" path="res://data/objects/chori_chimi.tres" id="8_7433l"]
-[ext_resource type="Material" uid="uid://ckxy0vcwrrjew" path="res://prefabs/slider.tres" id="10_rsvco"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="13_e113x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
@@ -151,10 +150,9 @@ use_collision = true
 flip_faces = true
 size = Vector3(30.1664, 3.07336, 15.5504)
 
-[node name="HoldingWorkingArea" parent="." node_paths=PackedStringArray("slider") instance=ExtResource("5_fduw6")]
+[node name="HoldingWorkingArea" parent="." instance=ExtResource("5_fduw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1285, 0.208444, -1.95076)
-duration = 20.0
-slider = NodePath("Slider3D/SubViewport/Control/HSlider")
+duration = 1.0
 
 [node name="Area3D" parent="HoldingWorkingArea" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
@@ -165,10 +163,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="HoldingWorkingArea/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="MeshInstance3D" parent="HoldingWorkingArea/Slider3D" index="1"]
-transform = Transform3D(0.999964, 0, 0, 0, 0.999964, 0, 0, 0, 0.999964, 0, 0, 0)
-surface_material_override/0 = ExtResource("10_rsvco")
 
 [node name="Node" type="Node" parent="."]
 script = SubResource("GDScript_hkgik")

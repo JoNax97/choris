@@ -2,7 +2,7 @@ class_name HoldingWorkingArea
 extends WorkingArea
 
 @export var duration : float
-@export var slider : HSlider
+@export var slider : Slider3D
 
 var elapsed_time : float # use for update the ui
 var is_processing : bool
@@ -34,8 +34,7 @@ func process(step : float):
 	var slider_value : float 
 	slider_value = inverse_lerp(0, duration, elapsed_time)
 	slider_value = clampf(slider_value, 0, elapsed_time)
-	
-	slider.value = slider_value
+	slider.set_value(slider_value)
 	
 	if(elapsed_time >= duration):
 		is_processing = false
