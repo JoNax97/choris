@@ -2,6 +2,8 @@ class_name WorkingArea
 extends Node3D
 
 @export var allowed_tags := ObjectTags.new()
+@export var added_tags := ObjectTags.new()
+@export var removed_tags := ObjectTags.new()
 @export var area_name := "Working Area"
 @export var action_name := "Do Action"
 
@@ -51,6 +53,11 @@ func can_be_processed() -> bool:
 	
 func process(step : float):
 	print("needing implementation")
+	
+func done():
+	#convert pickable
+	pickable_object_in_use.modify_tags(added_tags, removed_tags)
+	#get new pickable
 	
 func _on_interaction_area_closest_object_changed(prev: PickableObject, new: PickableObject):
 	if(new and not new.is_picked and can_put(new)):

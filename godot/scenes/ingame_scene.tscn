@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=21 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3D_resource.gd" id="3_gw6tp"]
 [ext_resource type="PackedScene" uid="uid://duvenievjg3vb" path="res://prefabs/WorkingArea/Implementations/holding_working_area.tscn" id="5_fduw6"]
 [ext_resource type="PackedScene" uid="uid://41g1o0rp0a53" path="res://prefabs/object_spawner/object_spawner.tscn" id="7_blyaf"]
-[ext_resource type="Resource" uid="uid://bgu5wrtxgbamx" path="res://data/objects/choripan.tres" id="8_7433l"]
+[ext_resource type="Resource" uid="uid://cj7v8l1mgt5yn" path="res://data/objects/chorizo_crudo.tres" id="8_6wpdv"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="13_e113x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
@@ -38,7 +38,15 @@ albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
 
 [sub_resource type="Resource" id="Resource_y3nik"]
 script = ExtResource("13_e113x")
-value = 6
+value = 34
+
+[sub_resource type="Resource" id="Resource_6khcj"]
+script = ExtResource("13_e113x")
+value = 64
+
+[sub_resource type="Resource" id="Resource_ha3km"]
+script = ExtResource("13_e113x")
+value = 32
 
 [node name="IngameScene" type="Node3D"]
 script = ExtResource("1_vonjy")
@@ -104,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885049, 0, -3.75953)
 
 [node name="ObjectSpawner" parent="." instance=ExtResource("7_blyaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0)
-object_data = ExtResource("8_7433l")
+object_data = ExtResource("8_6wpdv")
 
 [node name="AutospawnTimer" parent="ObjectSpawner" index="0"]
 wait_time = 3.0
@@ -132,6 +140,8 @@ size = Vector3(30.1664, 3.07336, 15.5504)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1285, 0.208444, -1.95076)
 duration = 1.0
 allowed_tags = SubResource("Resource_y3nik")
+added_tags = SubResource("Resource_6khcj")
+removed_tags = SubResource("Resource_ha3km")
 area_name = "Smashing"
 
 [node name="Area3D" parent="HoldingWorkingArea" index="2"]

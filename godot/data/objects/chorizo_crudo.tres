@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectData" load_steps=5 format=3 uid="uid://coyjnqdhlchpp"]
+[gd_resource type="Resource" script_class="ObjectData" load_steps=5 format=3 uid="uid://cj7v8l1mgt5yn"]
 
 [ext_resource type="Script" path="res://data/object_data.gd" id="1_67fgm"]
 [ext_resource type="Texture2D" uid="uid://b23qjr8nsw0on" path="res://sprites/chori_crudo.png" id="2_wa1xp"]

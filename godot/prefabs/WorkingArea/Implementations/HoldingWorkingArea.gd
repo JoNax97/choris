@@ -41,4 +41,5 @@ func process(step : float):
 	
 	if(elapsed_time >= duration):
 		is_processing = false
+		done()
 	

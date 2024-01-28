@@ -19,5 +19,5 @@ func combine(tags_to_add: ObjectTags, tags_to_remove: ObjectTags) -> ObjectTags:
 	var tags = ObjectTags.new()
 	var add = tags_to_add.value
 	var remove = tags_to_remove.value
-	tags.value = (value | add) & (! remove)
+	tags.value = (value | add) & (~remove)
 	return tags
