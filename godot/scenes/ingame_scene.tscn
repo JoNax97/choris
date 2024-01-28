@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=52 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cgnbkvbhivbmv" path="res://Models/Parrilia_T_Parrilia_Base_Color.png" id="18_01hou"]
 [ext_resource type="Texture2D" uid="uid://xvh8hm5lfld8" path="res://sprites/Chimi_Chori -26.png" id="21_36kuk"]
 [ext_resource type="PackedScene" path="res://prefabs/client_path.tscn" id="21_e30mu"]
+[ext_resource type="Texture2D" uid="uid://wqpbbwifd45r" path="res://Models/49b1616bffb9c54581550ba29ed57a2d.jpg" id="22_bs0b4"]
 [ext_resource type="Script" path="res://prefabs/client_path.gd" id="22_ybb4j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
@@ -123,6 +124,12 @@ value = 64
 [sub_resource type="Resource" id="Resource_qtqxs"]
 script = ExtResource("13_e113x")
 value = 32
+
+[sub_resource type="QuadMesh" id="QuadMesh_cgpa7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42u8o"]
+shading_mode = 0
+albedo_texture = ExtResource("22_bs0b4")
 
 [node name="IngameScene" type="Node3D"]
 script = ExtResource("1_vonjy")
@@ -408,6 +415,11 @@ transform = Transform3D(0.658389, 0, 0, 0, 0.658389, 0, 0, 0, 0.658389, 0, 0, 0)
 process_mode = 4
 transform = Transform3D(0.843826, 0, 0, 0, 1, 0, 0, 0, 0.884626, 0, 0, 0)
 visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.16305, 0, 0, 0, 1.71503, 2.65774, 0, -2.65774, 1.71503, 6.09212, 4.56874, -7.98663)
+mesh = SubResource("QuadMesh_cgpa7")
+surface_material_override/0 = SubResource("StandardMaterial3D_42u8o")
 
 [editable path="Escenario"]
 [editable path="character4"]
