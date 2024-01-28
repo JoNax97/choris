@@ -201,10 +201,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473671, 0, -0.857788)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0875, 0, -1.07492)
 
 [node name="character3" parent="." instance=ExtResource("2_o1xo3")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17253, 0, -3.75953)
 visible = false
 
 [node name="character4" parent="." instance=ExtResource("2_o1xo3")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885049, 0, -3.75953)
 visible = false
 
