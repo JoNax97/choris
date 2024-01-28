@@ -6,9 +6,14 @@ signal order_received
 
 @export var desired_object: ObjectData
 @export var phrase_override := ""
+@export var right_sfx: AudioStream
+@export var wrong_sfx: AudioStream
 
 @onready var label : Label3D = $Label
 @onready var object_pivot: Node3D = $Pivot
+@onready var sfx_player = $SfxPlayer
+
+@export var rat: ObjectTags
 
 var can_interact = false
 var order_correct: bool
@@ -35,7 +40,13 @@ func give_object(obj: PickableObject):
 	can_interact = false
 	obj.pick(object_pivot, true)
 	order_correct = desired_object.tags.equals( obj.data.tags)	
-	label.text = responses_right.pick_random() if order_correct else responses_wrong.pick_random()
+	sfx_player.stream = right_sfx if order_correct else wrong_sfx
+	sfx_player.play()
+	
+	if obj.data.tags.includes(rat):
+		label.text = "QUE ASCO LA PUTA MADRE!"
+	else:
+		label.text = responses_right.pick_random() if order_correct else responses_wrong.pick_random()
 	await get_tree().create_timer(0.7).timeout
 	obj.queue_free()
 	order_received.emit()

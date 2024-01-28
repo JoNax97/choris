@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://pk64adkf2dgn"]
+[gd_scene load_steps=10 format=3 uid="uid://pk64adkf2dgn"]
 
 [ext_resource type="Script" path="res://prefabs/client/client.gd" id="1_lnpru"]
 [ext_resource type="Texture2D" uid="uid://kotvcs7vfil4" path="res://sprites/cliente.png" id="1_yi8qw"]
 [ext_resource type="Resource" uid="uid://bgu5wrtxgbamx" path="res://data/objects/choripan.tres" id="2_0f1jt"]
+[ext_resource type="Script" path="res://data/object_tags.gd" id="3_1dtpd"]
+[ext_resource type="AudioStream" uid="uid://bn757wk8rauma" path="res://music/Sound/SFX_Good.ogg" id="3_ybv8f"]
+[ext_resource type="AudioStream" uid="uid://csnjqjfx6vfk4" path="res://music/Sound/SFX_Wrong.ogg" id="4_xxh6v"]
+
+[sub_resource type="Resource" id="Resource_4dy2m"]
+script = ExtResource("3_1dtpd")
+value = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvsgq"]
 
@@ -12,6 +19,9 @@ radius = 1.41672
 [node name="Client" type="CharacterBody3D"]
 script = ExtResource("1_lnpru")
 desired_object = ExtResource("2_0f1jt")
+right_sfx = ExtResource("3_ybv8f")
+wrong_sfx = ExtResource("4_xxh6v")
+rat = SubResource("Resource_4dy2m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -37,6 +47,8 @@ font_size = 40
 
 [node name="Pivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18114, 0.6)
+
+[node name="SfxPlayer" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]

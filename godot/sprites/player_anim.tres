@@ -1,37 +1,37 @@
 [gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://b5xsecfeua30f"]
 
-[ext_resource type="Texture2D" uid="uid://76x4kongrafo" path="res://sprites/Chimi_PlayerM.png" id="1_og01b"]
+[ext_resource type="Texture2D" uid="uid://76x4kongrafo" path="res://sprites/Chimi_PlayerM.png" id="1_3jjvn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4hvl"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhr23"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(1024, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ajch"]
-atlas = ExtResource("1_og01b")
-region = Rect2(0, 1024, 512, 512)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tk0y"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(512, 1024, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ajch"]
+atlas = ExtResource("1_3jjvn")
+region = Rect2(0, 1024, 512, 512)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmpm5"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(512, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7x77"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxcoh"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(0, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60pjd"]
-atlas = ExtResource("1_og01b")
+atlas = ExtResource("1_3jjvn")
 region = Rect2(512, 512, 512, 512)
 
 [resource]
@@ -54,14 +54,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ajch")
+"texture": SubResource("AtlasTexture_3tk0y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3tk0y")
+"texture": SubResource("AtlasTexture_2ajch")
 }],
-"loop": true,
+"loop": false,
 "name": &"interact",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,

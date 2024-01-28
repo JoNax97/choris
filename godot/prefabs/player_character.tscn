@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5t08tnwtjbie"]
+[gd_scene load_steps=10 format=3 uid="uid://c5t08tnwtjbie"]
 
 [ext_resource type="Script" path="res://prefabs/player_character.gd" id="1_u7tqp"]
 [ext_resource type="PackedScene" uid="uid://bblw5evq071u" path="res://prefabs/interaction_area.tscn" id="2_ul157"]
-[ext_resource type="SpriteFrames" uid="uid://b5xsecfeua30f" path="res://sprites/player.tres" id="3_ejp1w"]
+[ext_resource type="SpriteFrames" uid="uid://b5xsecfeua30f" path="res://sprites/player_anim.tres" id="3_ejp1w"]
 [ext_resource type="Shader" path="res://shaders/sprite_shader.gdshader" id="3_i6xfm"]
+[ext_resource type="AudioStream" uid="uid://b7p5rxfdk7anf" path="res://music/Sound/SFX_RatKill.ogg" id="3_tkq82"]
 [ext_resource type="Texture2D" uid="uid://76x4kongrafo" path="res://sprites/Chimi_PlayerM.png" id="4_3umns"]
+[ext_resource type="AudioStream" uid="uid://ctwbxbbrqehsc" path="res://music/Sound/SFX_Action.ogg" id="6_ddvdp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5cmy"]
 radius = 0.7
@@ -24,6 +26,8 @@ shader_parameter/tex = ExtResource("4_3umns")
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_u7tqp")
+interact_sfx = ExtResource("6_ddvdp")
+rat_kill_sfx = ExtResource("3_tkq82")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -50,5 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46165, -0.0866885)
 billboard = 1
 text = "E AMEO Y EL CHIMI?"
 font_size = 40
+
+[node name="SfxPlayer" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 2
 
 [connection signal="closest_object_changed" from="InteractionArea" to="." method="_on_interaction_area_closest_object_changed"]

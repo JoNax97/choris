@@ -3,9 +3,14 @@ class_name PlayerCharacter extends CharacterBody3D
 @export var speed = 500.0
 @export var acceleration = 50.0
 
+@export var interact_sfx: AudioStream
+@export var rat_kill_sfx: AudioStream
+
+
 @onready var sprite : AnimatedSprite3D = $ModelPivot/Sprite
 @onready var interaction_area : InteractionArea = $InteractionArea
 @onready var label : Label3D = $Label
+@onready var sfx_player = $SfxPlayer
 
 var current_working_area : WorkingArea
 var current_client: Client
@@ -13,6 +18,7 @@ var current_rat: Rat
 var picked_object: PickableObject
 
 var player_idx : int
+var interaction_anim_playing = false
 
 const player_colors = [Color.CRIMSON, Color.DODGER_BLUE, Color.DARK_ORANGE, Color.CHARTREUSE]
 
@@ -50,14 +56,15 @@ func _handle_movement(delta):
 
 	move_and_slide()
 	
-	var moving = get_real_velocity().length_squared() > 0.1
-	var anim = "walk" if moving else "idle"
-	
-	if picked_object:
-		anim += "_carry"
-	
-	if sprite.animation != anim:
-		sprite.play(anim)
+	if not interaction_anim_playing:
+		var moving = get_real_velocity().length_squared() > 0.1
+		var anim = "walk" if moving else "idle"
+		
+		if picked_object:
+			anim += "_carry"
+		
+		if sprite.animation != anim:
+			sprite.play(anim)
 	
 func _handle_interaction_prompt():
 	var text = ""
@@ -72,7 +79,7 @@ func _handle_interaction_prompt():
 		else:
 			text = current_working_area.area_name
 	
-	else: if current_client:
+	else: if is_instance_valid(current_client) and current_client.can_interact:
 		if picked_object:
 			text = "Entregar %s" % picked_object.data.name
 			
@@ -98,11 +105,11 @@ func _handle_interaction():
 			picked_object.pick($PickedObjectPivot)
 
 		else: if current_working_area.can_be_processed():
-			print(current_working_area.action_name)
-			current_working_area.process(0.1)			
+			current_working_area.process(0.1)
+			_interaction_anim(interact_sfx)
 		return
 		
-	if current_client:
+	if is_instance_valid(current_client) and current_client.can_interact:
 		if picked_object:
 			current_client.give_object(picked_object)
 			picked_object = null
@@ -110,6 +117,7 @@ func _handle_interaction():
 		
 	if current_rat && !current_rat.is_picked:
 		if !picked_object:
+			_interaction_anim(rat_kill_sfx)
 			current_rat.pick()
 			picked_object = current_rat.pickable
 			current_rat = null
@@ -128,6 +136,18 @@ func _handle_interaction():
 	if obj and not obj.is_picked:
 		picked_object = obj
 		obj.pick($PickedObjectPivot)
+		return
+	
+	_interaction_anim(interact_sfx)
+
+func _interaction_anim(audio):
+	if not interaction_anim_playing:
+		interaction_anim_playing = true
+		sfx_player.stream = audio
+		sfx_player.play(0.02)
+		sprite.play("interact")
+		await sprite.animation_finished
+		interaction_anim_playing = false
 
 func _on_interaction_area_closest_object_changed(prev, new):
 	if picked_object:
