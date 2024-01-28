@@ -23,6 +23,7 @@ script = ExtResource("1_afllq")
 shape = SubResource("CylinderShape3D_l03pl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_njwu1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

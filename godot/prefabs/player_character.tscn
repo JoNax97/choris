@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bblw5evq071u" path="res://prefabs/interaction_area.tscn" id="2_ul157"]
 [ext_resource type="SpriteFrames" uid="uid://b5xsecfeua30f" path="res://sprites/player.tres" id="3_ejp1w"]
 [ext_resource type="Shader" path="res://shaders/sprite_shader.gdshader" id="3_i6xfm"]
-[ext_resource type="Texture2D" uid="uid://bicnyiica33k0" path="res://sprites/Chimi_PlayerM.png" id="4_3umns"]
+[ext_resource type="Texture2D" uid="uid://76x4kongrafo" path="res://sprites/Chimi_PlayerM.png" id="4_3umns"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5cmy"]
 radius = 0.8
@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00104, 0.019588)
 material_override = SubResource("ShaderMaterial_uebfp")
 pixel_size = 0.0045
 sprite_frames = ExtResource("3_ejp1w")
-animation = &"walk"
+animation = &"idle"
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_ul157")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

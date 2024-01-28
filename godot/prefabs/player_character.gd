@@ -49,8 +49,11 @@ func _handle_movement(delta):
 
 	move_and_slide()
 	
-	var moving = get_real_velocity().length_squared() > 0
+	var moving = get_real_velocity().length_squared() > 0.1
 	var anim = "walk" if moving else "idle"
+	
+	if picked_object:
+		anim += "_carry"
 	
 	if sprite.animation != anim:
 		sprite.play(anim)
