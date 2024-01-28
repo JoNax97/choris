@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00319, -0.485866)
 
 [node name="Label" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46165, -0.0866885)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26165, 0.513312)
 billboard = 1
 text = "E AMEO Y EL CHIMI?"
 font_size = 40

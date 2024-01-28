@@ -69,7 +69,7 @@ func _on_interaction_area_closest_object_changed(prev: PickableObject, new: Pick
 
 func _on_body_entered(body):
 	var player = body as PlayerCharacter
-	if player and player.current_working_area == null: 
+	if player: 
 		player.current_working_area = self
 
 func _on_body_exited(body):

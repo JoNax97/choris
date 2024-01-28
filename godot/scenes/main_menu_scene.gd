@@ -35,10 +35,12 @@ func _ready() -> void:
 		new_game_button.grab_focus()
 
 func _on_settings_button_pressed() -> void:
-	new_game = false
-	next_scene = settings_scene
-	overlay.fade_out()
-	
+	OS.shell_open("https://cgtoficial.org/")
+	#
+	#new_game = false
+	#next_scene = settings_scene
+	#overlay.fade_out()
+	#
 func _on_play_button_pressed() -> void:
 	next_scene = game_scene
 	overlay.fade_out()

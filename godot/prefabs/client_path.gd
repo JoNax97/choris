@@ -38,6 +38,7 @@ func _next_client():
 	var client_idx = 0
 	for client in clients:
 		await client._move_to( markers[client_idx])
+		if client_idx == 0:
+			_next_client()
 		client_idx += 1
 
-	_next_client()

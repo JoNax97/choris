@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectData" load_steps=5 format=3 uid="uid://cmxdvg120dfn2"]
+
+[ext_resource type="Script" path="res://data/object_data.gd" id="1_yoo5i"]
+[ext_resource type="Texture2D" uid="uid://bhnfoitg77dry" path="res://sprites/Chimi_Chori -25.png" id="2_q1ock"]
+[ext_resource type="Script" path="res://data/object_tags.gd" id="3_imfov"]
+
+[sub_resource type="Resource" id="Resource_phpnx"]
+script = ExtResource("3_imfov")
+value = 38
+
+[resource]
+script = ExtResource("1_yoo5i")
+tags = SubResource("Resource_phpnx")
+name = "choripan crudo"
+sprite = ExtResource("2_q1ock")

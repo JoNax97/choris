@@ -19,7 +19,7 @@ var picked_object: PickableObject
 var player_idx : int
 var interaction_anim_playing = false
 
-const player_colors = [Color.CRIMSON, Color.DODGER_BLUE, Color.DARK_ORANGE, Color.CHARTREUSE]
+const player_colors = [Color("#bdb295"), Color("#254557"), Color.DARK_ORANGE, Color.CHARTREUSE]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

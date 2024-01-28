@@ -60,7 +60,7 @@ func give_object(obj: PickableObject):
 		label.text = responses_right.pick_random() if order_correct else responses_wrong.pick_random()
 	
 	obj.queue_free()
-	await get_tree().create_timer(1.5).timeout
+	#await get_tree().create_timer(1.5).timeout
 	order_received.emit()
 	
 func leave(pos: Node3D):
