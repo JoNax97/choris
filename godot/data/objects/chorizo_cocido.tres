@@ -11,5 +11,5 @@ value = 66
 [resource]
 script = ExtResource("1_op0fb")
 tags = SubResource("Resource_4khjq")
-name = "Rata"
+name = "chorizo cocinado"
 sprite = ExtResource("2_qpu43")

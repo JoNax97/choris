@@ -8,8 +8,8 @@ var data: ObjectData : set = _set_data
 
 var is_picked
 
-func pick(parent: Node3D):
-	if is_picked:
+func pick(parent: Node3D, force = false):
+	if is_picked && !force:
 		return
 	
 	is_picked = true

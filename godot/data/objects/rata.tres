@@ -11,5 +11,5 @@ value = 33
 [resource]
 script = ExtResource("1_ykcki")
 tags = SubResource("Resource_4khjq")
-name = "Rata"
+name = "rata"
 sprite = ExtResource("2_m3p5e")

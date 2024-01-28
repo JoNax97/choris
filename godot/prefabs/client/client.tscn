@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://pk64adkf2dgn"]
+
+[ext_resource type="Script" path="res://prefabs/client/client.gd" id="1_lnpru"]
+[ext_resource type="Texture2D" uid="uid://kotvcs7vfil4" path="res://sprites/cliente.png" id="1_yi8qw"]
+[ext_resource type="Resource" uid="uid://bgu5wrtxgbamx" path="res://data/objects/choripan.tres" id="2_0f1jt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvsgq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xbire"]
+radius = 1.41672
+
+[node name="Client" type="CharacterBody3D"]
+script = ExtResource("1_lnpru")
+desired_object = ExtResource("2_0f1jt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_tvsgq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0, 0)
+pixel_size = 0.006
+billboard = 1
+texture = ExtResource("1_yi8qw")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_xbire")
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.553285, 1.2619, 0)
+billboard = 1
+font_size = 40
+
+[node name="Pivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18114, 0.6)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]

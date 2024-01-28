@@ -11,5 +11,5 @@ value = 6
 [resource]
 script = ExtResource("1_lwxey")
 tags = SubResource("Resource_phpnx")
-name = "Choripan"
+name = "choripan"
 sprite = ExtResource("2_x0sdb")

@@ -8,6 +8,7 @@ class_name PlayerCharacter extends CharacterBody3D
 @onready var label : Label3D = $Label
 
 var current_working_area : WorkingArea
+var current_client: Client
 var picked_object: PickableObject
 
 var player_idx : int
@@ -52,15 +53,18 @@ func _handle_interaction_prompt():
 	var text = ""
 	
 	if current_working_area:
-		text += current_working_area.area_name
 		if picked_object and current_working_area.can_put(picked_object):
-			text += ": Poner %s" % picked_object.data.name
+			text = "Poner %s en %s" % [picked_object.data.name, current_working_area.area_name]
 		else: if not picked_object and current_working_area.can_pick():
-			text += ": Agarrar %s" % current_working_area.pickable_object_in_use
+			text = "Agarrar %s de %s" % [current_working_area.pickable_object_in_use.data.name, current_working_area.area_name]
 		else: if current_working_area.can_process():
-			text += ": %s" % current_working_area.action_name
-	else:
-		text = "NO AREA"
+			text = current_working_area.action_name
+		else:
+			text = current_working_area.area_name
+	
+	else: if current_client:
+		if picked_object:
+			text = "Entregar %s" % picked_object.data.name
 	
 	label.text = text
 
@@ -80,8 +84,13 @@ func _handle_interaction():
 			picked_object.pick($PickedObjectPivot)
 
 		else: if current_working_area.can_be_processed():
-			current_working_area.process(0.1)
-			
+			current_working_area.process(0.1)			
+		return
+		
+	if current_client:
+		if picked_object:
+			current_client.give_object(picked_object)
+			picked_object = null
 		return
 		
 	if picked_object:
@@ -98,9 +107,9 @@ func _on_interaction_area_closest_object_changed(prev, new):
 	if picked_object:
 		return
 	
-	if prev: 
+	if is_instance_valid(prev): 
 		prev.scale = Vector3.ONE
-	if new and not new.is_picked: 
+	if is_instance_valid(new) and not new.is_picked: 
 		new.scale = Vector3.ONE * 1.2
 		
 func pick_object():
