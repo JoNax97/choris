@@ -18,6 +18,6 @@ func _process(delta):
 		return
 		
 	var slider_value : float 
-	slider_value = inverse_lerp(0, duration, timer.time_left - duration)
+	slider_value = inverse_lerp(0, duration, abs(timer.time_left - duration))
 	slider_value = clampf(slider_value, 0, elapsed_time)
 	slider.value = slider_value

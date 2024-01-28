@@ -25,6 +25,7 @@ func _is_valid_pickable(pickable_object : Node3D) -> bool:
 
 func put(pickable_object : Node3D):
 	pickable_object_in_use = pickable_object
+	isInUse = true
 	_put_intern(pickable_object)
 
 func _put_intern(pickable_object : Node3D):
