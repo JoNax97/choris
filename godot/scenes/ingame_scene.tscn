@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://blwkfqr4r8xha" path="res://Models/Choricera.glb" id="17_n6deg"]
 [ext_resource type="Texture2D" uid="uid://cgnbkvbhivbmv" path="res://Models/Parrilia_T_Parrilia_Base_Color.png" id="18_01hou"]
 [ext_resource type="Texture2D" uid="uid://xvh8hm5lfld8" path="res://sprites/Chimi_Chori -26.png" id="21_36kuk"]
-[ext_resource type="PackedScene" uid="uid://4k3ypaymupoc" path="res://prefabs/client_path.tscn" id="21_e30mu"]
+[ext_resource type="PackedScene" path="res://prefabs/client_path.tscn" id="21_e30mu"]
 [ext_resource type="Script" path="res://prefabs/client_path.gd" id="22_ybb4j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
@@ -195,7 +195,7 @@ shape = SubResource("ConcavePolygonShape3D_m8i5o")
 shape = SubResource("ConcavePolygonShape3D_eip3e")
 
 [node name="character" parent="." instance=ExtResource("2_o1xo3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473671, 0, -0.857788)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473671, 0, -0.128296)
 
 [node name="character2" parent="." instance=ExtResource("2_o1xo3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0875, 0, -1.07492)
