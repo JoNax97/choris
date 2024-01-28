@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=30 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -10,11 +10,12 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3D_resource.gd" id="3_gw6tp"]
 [ext_resource type="PackedScene" uid="uid://duvenievjg3vb" path="res://prefabs/WorkingArea/Implementations/holding_working_area.tscn" id="5_fduw6"]
 [ext_resource type="PackedScene" uid="uid://41g1o0rp0a53" path="res://prefabs/object_spawner/object_spawner.tscn" id="7_blyaf"]
-[ext_resource type="Resource" uid="uid://coyjnqdhlchpp" path="res://data/objects/chorizo_crudo.tres" id="8_6wpdv"]
+[ext_resource type="Resource" uid="uid://clr4jpxa73mxs" path="res://data/objects/rata.tres" id="8_0ip0c"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="13_e113x"]
-[ext_resource type="Texture2D" uid="uid://dn5i6l4mlq08i" path="res://sprites/Chimi_Rat_Idle - 14.png" id="13_jodap"]
+[ext_resource type="Texture2D" uid="uid://b0yn8oh4k6g72" path="res://sprites/Chimi_Rat_Idle.png" id="13_jodap"]
 [ext_resource type="PackedScene" uid="uid://pk64adkf2dgn" path="res://prefabs/client/client.tscn" id="13_vwran"]
 [ext_resource type="Resource" uid="uid://bjwkoewypmnmm" path="res://data/objects/chorizo_cocido.tres" id="15_1acmi"]
+[ext_resource type="PackedScene" uid="uid://44vhj27joaiq" path="res://prefabs/WorkingArea/Implementations/timer_working_area.tscn" id="16_1dlgy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -39,24 +40,36 @@ fov = 30.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulqt3"]
 albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
 
-[sub_resource type="Resource" id="Resource_y3nik"]
-script = ExtResource("13_e113x")
-value = 34
-
-[sub_resource type="Resource" id="Resource_ki41t"]
-script = ExtResource("13_e113x")
-value = 64
-
-[sub_resource type="Resource" id="Resource_56cgx"]
-script = ExtResource("13_e113x")
-value = 32
-
 [sub_resource type="QuadMesh" id="QuadMesh_3wdpm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgbgd"]
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("13_jodap")
+
+[sub_resource type="Resource" id="Resource_y3nik"]
+script = ExtResource("13_e113x")
+value = 33
+
+[sub_resource type="Resource" id="Resource_ki41t"]
+script = ExtResource("13_e113x")
+value = 34
+
+[sub_resource type="Resource" id="Resource_56cgx"]
+script = ExtResource("13_e113x")
+value = 1
+
+[sub_resource type="Resource" id="Resource_wmcx5"]
+script = ExtResource("13_e113x")
+value = 34
+
+[sub_resource type="Resource" id="Resource_4jemf"]
+script = ExtResource("13_e113x")
+value = 64
+
+[sub_resource type="Resource" id="Resource_nvhhb"]
+script = ExtResource("13_e113x")
+value = 33
 
 [node name="IngameScene" type="Node3D"]
 script = ExtResource("1_vonjy")
@@ -122,7 +135,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885049, 0, -3.75953)
 
 [node name="ObjectSpawner" parent="." instance=ExtResource("7_blyaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0)
-object_data = ExtResource("8_6wpdv")
+object_data = ExtResource("8_0ip0c")
 
 [node name="AutospawnTimer" parent="ObjectSpawner" index="0"]
 wait_time = 3.0
@@ -146,24 +159,6 @@ use_collision = true
 flip_faces = true
 size = Vector3(30.1664, 3.07336, 15.5504)
 
-[node name="HoldingWorkingArea" parent="." instance=ExtResource("5_fduw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2498, 0.208441, -1.8663)
-duration = 1.0
-allowed_tags = SubResource("Resource_y3nik")
-added_tags = SubResource("Resource_ki41t")
-removed_tags = SubResource("Resource_56cgx")
-area_name = "Trituradora Smashing"
-
-[node name="Area3D" parent="HoldingWorkingArea" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
-script = null
-
-[node name="CollisionShape3D" parent="HoldingWorkingArea/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="MeshInstance3D" parent="HoldingWorkingArea/Area3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.89898, 0, 0, 0, -1.26719e-07, 2.89898, 0, -2.89898, -1.26719e-07, 0.956383, 0.342427, 3.26232)
 mesh = SubResource("QuadMesh_3wdpm")
@@ -173,9 +168,49 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cgbgd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.08602, 6)
 desired_object = ExtResource("15_1acmi")
 
+[node name="Trituradora-HoldingWorkingArea" parent="." instance=ExtResource("5_fduw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2498, 0.208441, -1.8663)
+duration = 1.0
+allowed_tags = SubResource("Resource_y3nik")
+added_tags = SubResource("Resource_ki41t")
+removed_tags = SubResource("Resource_56cgx")
+area_name = "Trituradora Smashing"
+
+[node name="InteractionArea" parent="Trituradora-HoldingWorkingArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0407658, 4.26622, 0)
+visible = false
+
+[node name="Area3D" parent="Trituradora-HoldingWorkingArea" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
+script = null
+
+[node name="CollisionShape3D" parent="Trituradora-HoldingWorkingArea/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="Trituradora-HoldingWorkingArea/Area3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Label3D2" parent="Trituradora-HoldingWorkingArea" index="7"]
+text = "Trituradora (Smash)"
+
+[node name="Parrilla-TimerWorkingArea" parent="." instance=ExtResource("16_1dlgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.85907, 0.23982, -2.07028)
+duration = 5.0
+allowed_tags = SubResource("Resource_wmcx5")
+added_tags = SubResource("Resource_4jemf")
+removed_tags = SubResource("Resource_nvhhb")
+
+[node name="InteractionArea" parent="Parrilla-TimerWorkingArea" index="1"]
+visible = false
+
+[node name="Label3D" parent="Parrilla-TimerWorkingArea" index="7"]
+text = "Parrilla (Timer)"
+
 [editable path="Escenario"]
 [editable path="character4"]
 [editable path="ObjectSpawner"]
-[editable path="HoldingWorkingArea"]
-[editable path="HoldingWorkingArea/InteractionArea"]
-[editable path="HoldingWorkingArea/Slider3D"]
+[editable path="Trituradora-HoldingWorkingArea"]
+[editable path="Trituradora-HoldingWorkingArea/InteractionArea"]
+[editable path="Trituradora-HoldingWorkingArea/Slider3D"]
+[editable path="Parrilla-TimerWorkingArea"]
+[editable path="Parrilla-TimerWorkingArea/InteractionArea"]
