@@ -27,6 +27,9 @@ func _put_intern_holding():
 
 func can_pick() -> bool:
 	return !is_processing
+	
+func can_be_processed() -> bool:
+	return isInUse && is_processing
 
 func process(step : float):
 	elapsed_time += step

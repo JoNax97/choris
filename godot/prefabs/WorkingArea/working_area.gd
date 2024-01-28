@@ -18,7 +18,8 @@ func _can_put_intern(pickable_object : Node3D) -> bool:
 	return true
 	
 func _is_valid_pickable(pickable_object : Node3D) -> bool:
-	if(pickable_object_in_use != null):
+	return pickable_object.data.tags.includes(allowed_tags)
+	if(pickable_object.data.tags.includes(allowed_tags)):
 		pickable_object.tag
 		# compare the object tags
 		#return pickable_object.object_type == pickable_object_in_use.object_type

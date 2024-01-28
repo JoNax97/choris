@@ -79,7 +79,7 @@ func _handle_interaction():
 			picked_object.is_picked = false
 			picked_object.pick($PickedObjectPivot)
 
-		else: if current_working_area.can_process():
+		else: if current_working_area.can_be_processed():
 			current_working_area.process(0.1)
 			
 		return
