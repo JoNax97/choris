@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectData" load_steps=5 format=3 uid="uid://clr4jpxa73mxs"]
+
+[ext_resource type="Script" path="res://data/object_data.gd" id="1_ykcki"]
+[ext_resource type="Texture2D" uid="uid://bupc0feudspxn" path="res://sprites/ratatest.png" id="2_m3p5e"]
+[ext_resource type="Script" path="res://data/object_tags.gd" id="3_sjhno"]
+
+[sub_resource type="Resource" id="Resource_4khjq"]
+script = ExtResource("3_sjhno")
+value = 33
+
+[resource]
+script = ExtResource("1_ykcki")
+tags = SubResource("Resource_4khjq")
+name = "Rata"
+sprite = ExtResource("2_m3p5e")
