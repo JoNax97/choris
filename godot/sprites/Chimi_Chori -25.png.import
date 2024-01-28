@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cji1q46s4nvjh"
-path="res://.godot/imported/Chimi_PlayerM_Idle -05.png-016b3c0b9e5c47787ff67e4f28072c50.ctex"
+uid="uid://bhnfoitg77dry"
+path="res://.godot/imported/Chimi_Chori -25.png-7c4f654323158f1efa2d56b1e4581d79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Chimi_PlayerM_Idle -05.png"
-dest_files=["res://.godot/imported/Chimi_PlayerM_Idle -05.png-016b3c0b9e5c47787ff67e4f28072c50.ctex"]
+source_file="res://sprites/Chimi_Chori -25.png"
+dest_files=["res://.godot/imported/Chimi_Chori -25.png-7c4f654323158f1efa2d56b1e4581d79.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj1j5rxo4jxop"
-path="res://.godot/imported/Chimi_PlayerM_Walk -06.png-b415379fe2e5d3613e2d65b0521d3093.ctex"
+uid="uid://kuas5nq5f01p"
+path="res://.godot/imported/Chimi_Chori -23.png-5e29ef5ff2c88f9595eb9aaadb548c24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Chimi_PlayerM_Walk -06.png"
-dest_files=["res://.godot/imported/Chimi_PlayerM_Walk -06.png-b415379fe2e5d3613e2d65b0521d3093.ctex"]
+source_file="res://sprites/Chimi_Chori -23.png"
+dest_files=["res://.godot/imported/Chimi_Chori -23.png-5e29ef5ff2c88f9595eb9aaadb548c24.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b04l0mrdun4mk"
-path="res://.godot/imported/Chimi_Chori - 23.png-f1bc6a8cac15985a431ae96f5716f2d5.ctex"
+uid="uid://b0yn8oh4k6g72"
+path="res://.godot/imported/Chimi_Rat_Idle.png-dfc77d75a7605881ecc2675fd67d8ae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Chimi_Chori - 23.png"
-dest_files=["res://.godot/imported/Chimi_Chori - 23.png-f1bc6a8cac15985a431ae96f5716f2d5.ctex"]
+source_file="res://sprites/Chimi_Rat_Idle.png"
+dest_files=["res://.godot/imported/Chimi_Rat_Idle.png-dfc77d75a7605881ecc2675fd67d8ae4.ctex"]
 
 [params]
 
