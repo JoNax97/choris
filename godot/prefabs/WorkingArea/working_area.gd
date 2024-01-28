@@ -45,7 +45,11 @@ func pick() -> PickableObject:
 	var obj = pickable_object_in_use
 	pickable_object_in_use = null
 	isInUse = false
+	_pick_intern()
 	return obj
+	
+func _pick_intern():
+	pass
 	
 func can_be_processed() -> bool:
 	print("needing implementation")
@@ -64,13 +68,11 @@ func _on_interaction_area_closest_object_changed(prev: PickableObject, new: Pick
 		put(new)
 
 func _on_body_entered(body):
-	print(body)
 	var player = body as PlayerCharacter
 	if player and player.current_working_area == null: 
 		player.current_working_area = self
 
 func _on_body_exited(body):
-	print(body)
 	var player = body as PlayerCharacter
 	if player and player.current_working_area == self: 
 		player.current_working_area = null

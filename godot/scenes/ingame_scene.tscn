@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=24 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://41g1o0rp0a53" path="res://prefabs/object_spawner/object_spawner.tscn" id="7_blyaf"]
 [ext_resource type="Resource" uid="uid://cj7v8l1mgt5yn" path="res://data/objects/chorizo_crudo.tres" id="8_6wpdv"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="13_e113x"]
+[ext_resource type="Texture2D" uid="uid://dn5i6l4mlq08i" path="res://sprites/Chimi_Rat_Idle - 14.png" id="13_jodap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,6 +48,13 @@ value = 64
 [sub_resource type="Resource" id="Resource_ha3km"]
 script = ExtResource("13_e113x")
 value = 32
+
+[sub_resource type="QuadMesh" id="QuadMesh_3wdpm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgbgd"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("13_jodap")
 
 [node name="IngameScene" type="Node3D"]
 script = ExtResource("1_vonjy")
@@ -137,7 +145,7 @@ flip_faces = true
 size = Vector3(30.1664, 3.07336, 15.5504)
 
 [node name="HoldingWorkingArea" parent="." instance=ExtResource("5_fduw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1285, 0.208444, -1.95076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2498, 0.208441, -1.8663)
 duration = 1.0
 allowed_tags = SubResource("Resource_y3nik")
 added_tags = SubResource("Resource_6khcj")
@@ -153,6 +161,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="HoldingWorkingArea/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.89898, 0, 0, 0, -1.26719e-07, 2.89898, 0, -2.89898, -1.26719e-07, 0.956383, 0.342427, 3.26232)
+mesh = SubResource("QuadMesh_3wdpm")
+surface_material_override/0 = SubResource("StandardMaterial3D_cgbgd")
 
 [editable path="Escenario"]
 [editable path="character4"]

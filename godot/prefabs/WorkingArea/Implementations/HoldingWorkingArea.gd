@@ -3,8 +3,11 @@ extends WorkingArea
 
 @export var duration : float
 @export var slider : Slider3D
+@export var object_position : Node3D
+@export var result_position : Node3D
+@export var has_turn_off_object : bool
 
-var elapsed_time : float # use for update the ui
+var elapsed_time : float
 var is_processing : bool
 
 func _can_put_intern(pickable_object : Node3D) -> bool:
@@ -17,7 +20,11 @@ func put(pickable_object : Node3D):
 	isInUse = true
 	pickable_object_in_use = pickable_object
 	pickable_object_in_use.reparent(self)
-	pickable_object_in_use.hide()
+	pickable_object.position = object_position.position
+	
+	if has_turn_off_object:
+		pickable_object_in_use.hide()
+		
 	elapsed_time = 0
 	is_processing = true
 	_put_intern_holding()
@@ -41,5 +48,6 @@ func process(step : float):
 	
 	if(elapsed_time >= duration):
 		is_processing = false
+		pickable_object_in_use.position = result_position.position
 		done()
 	
