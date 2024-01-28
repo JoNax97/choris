@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b43pumedkd7ae"]
+
+[resource]
+resource_name = "M_Calle_Lineas"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.739993, 0.739993, 0.739993, 1)
+roughness = 0.5

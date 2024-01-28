@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b2fe8cv8ik4dw"]
+
+[resource]
+resource_name = "MGameZone_Border"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.806658, 0.776941, 0.175571, 1)
+roughness = 0.5

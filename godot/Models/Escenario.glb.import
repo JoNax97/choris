@@ -29,6 +29,37 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"MGameZone_Border": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/MGameZone_Border.tres"
+},
+"M_Agua": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/M_Agua.tres"
+},
+"M_Calle": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/M_Calle.tres"
+},
+"M_Calle_Lineas": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/M_Calle_Lineas.tres"
+},
+"M_Canal": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/M_Canal.tres"
+},
+"M_GameZone": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/M_GameZone.tres"
+},
+"M_Pared": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/materials/M_Pared.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

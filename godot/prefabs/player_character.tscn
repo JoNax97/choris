@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://76x4kongrafo" path="res://sprites/Chimi_PlayerM.png" id="4_3umns"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5cmy"]
-radius = 0.8
+radius = 0.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uebfp"]
 render_priority = 0

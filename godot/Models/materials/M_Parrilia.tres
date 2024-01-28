@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://brf37ynxwsdis"]
+
+[ext_resource type="Texture2D" uid="uid://cgnbkvbhivbmv" path="res://Models/Parrilia_T_Parrilia_Base_Color.png" id="1_oiglw"]
+
+[resource]
+resource_name = "M_Parrilia"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_oiglw")
