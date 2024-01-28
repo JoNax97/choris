@@ -9,6 +9,7 @@ class_name PlayerCharacter extends CharacterBody3D
 
 var current_working_area : WorkingArea
 var current_client: Client
+var current_rat: Rat
 var picked_object: PickableObject
 
 var player_idx : int
@@ -74,6 +75,10 @@ func _handle_interaction_prompt():
 	else: if current_client:
 		if picked_object:
 			text = "Entregar %s" % picked_object.data.name
+			
+	else: if current_rat:
+		if !picked_object:
+			text = "Agarrar Rata"
 	
 	label.text = text
 
@@ -100,6 +105,17 @@ func _handle_interaction():
 		if picked_object:
 			current_client.give_object(picked_object)
 			picked_object = null
+		return
+		
+	if current_rat && !current_rat.is_picked:
+		if !picked_object:
+			current_rat.pick()
+			picked_object = current_rat.pickable
+			current_rat = null
+			if picked_object:
+				picked_object.show()
+				picked_object.pick($PickedObjectPivot)
+				picked_object.scale = Vector3.ONE
 		return
 		
 	if picked_object:
