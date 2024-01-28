@@ -1,6 +1,7 @@
 class_name Client extends Node3D
 
 @export var desired_object: ObjectData
+@export var phrase_override := ""
 
 @onready var label : Label3D = $Label
 @onready var object_pivot: Node3D = $Pivot
@@ -9,7 +10,10 @@ func _ready():
 	ask_for_object()
 
 func ask_for_object():
-	label.text = "Gordo armame un %s, metele pata" % desired_object.name
+	if not phrase_override.is_empty():
+		label.text = phrase_override
+	else:
+		label.text = "Gordo armame un %s, metele pata" % desired_object.name
 
 func give_object(obj: PickableObject):
 	obj.pick(object_pivot, true)
