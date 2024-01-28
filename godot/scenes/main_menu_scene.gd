@@ -9,17 +9,21 @@ extends Node2D
 @onready var settings_button := %SettingsButton
 @onready var exit_button := %ExitButton
 
+@onready var background = %background
+
+
 var next_scene = game_scene
 var new_game = true
 
 func _ready() -> void:
+	background.play("default")
 	overlay.visible = true
-	new_game_button.disabled = game_scene == null
+	#new_game_button.disabled = game_scene == null
 	settings_button.disabled = settings_scene == null
 	continue_button.visible = SaveGame.has_save() and SaveGame.ENABLED
 	
 	# connect signals
-	new_game_button.pressed.connect(_on_play_button_pressed)
+	#new_game_button.pressed.connect(_on_play_button_pressed)
 	continue_button.pressed.connect(_on_continue_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	exit_button.pressed.connect(_on_exit_button_pressed)
