@@ -26,5 +26,5 @@ func _on_area_3d_body_entered(body):
 
 func _on_area_3d_body_exited(body):
 	var player = body as PlayerCharacter
-	if player and player.current_client == self: 
+	if player and player.current_rat == self: 
 		player.current_rat = null

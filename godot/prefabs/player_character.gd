@@ -83,8 +83,10 @@ func _handle_interaction_prompt():
 			text = "Entregar %s" % picked_object.data.name
 			
 	else: if current_rat:
-		if !picked_object:
+		if !picked_object && !current_rat.is_picked:
 			text = "Agarrar Rata"
+	else:
+		text = ""
 	
 	label.text = text
 
@@ -125,11 +127,12 @@ func _handle_interaction():
 		obj.pick($PickedObjectPivot)
 		return
 		
-	if current_rat && !current_rat.is_picked:
+	if !picked_object && current_rat && !current_rat.is_picked:
 		if !picked_object:
 			_interaction_anim(rat_kill_sfx)
 			current_rat.pick()
 			picked_object = current_rat.pickable
+			picked_object.process_mode = Node.PROCESS_MODE_INHERIT
 			current_rat = null
 			if picked_object:
 				picked_object.show()

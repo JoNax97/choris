@@ -17,9 +17,6 @@ action_name = "Wait to finish"
 [node name="Slider3D" parent="." index="0" instance=ExtResource("3_h0y1r")]
 transform = Transform3D(1, 0, 0, 0, 0.925587, 0.378536, 0, -0.378536, 0.925587, 0, 1.88565, 0)
 
-[node name="InteractionArea" parent="." index="1"]
-visible = false
-
 [node name="Timer" type="Timer" parent="." index="4"]
 
 [node name="Pickable_position" type="Node3D" parent="." index="5"]
