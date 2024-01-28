@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ObjectData" load_steps=5 format=3 uid="uid://coyjnqdhlchpp"]
 
 [ext_resource type="Script" path="res://data/object_data.gd" id="1_67fgm"]
-[ext_resource type="Texture2D" uid="uid://b23qjr8nsw0on" path="res://sprites/chori_crudo.png" id="2_wa1xp"]
+[ext_resource type="Texture2D" uid="uid://ce2wvpa6tf2dh" path="res://sprites/Chimi_Chori -19.png" id="2_g12gm"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="3_sqxwp"]
 
 [sub_resource type="Resource" id="Resource_4khjq"]
@@ -12,4 +12,4 @@ value = 34
 script = ExtResource("1_67fgm")
 tags = SubResource("Resource_4khjq")
 name = "chorizo crudo"
-sprite = ExtResource("2_wa1xp")
+sprite = ExtResource("2_g12gm")
