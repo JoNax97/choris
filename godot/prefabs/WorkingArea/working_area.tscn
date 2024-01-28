@@ -39,19 +39,21 @@ func _on_body_entered(body):
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c1x3r"]
-size = Vector3(1, 1, 2.26819)
+size = Vector3(1.65411, 1, 2.26819)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8qb0c"]
 size = Vector3(1, 1, 2.28)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xafhk"]
 transparency = 1
-albedo_color = Color(0.207843, 1, 1, 0.0588235)
+shading_mode = 0
+albedo_color = Color(0.207843, 1, 1, 0.0470588)
 
 [node name="WorkingArea" type="Node3D"]
 
 [node name="InteractionArea" parent="." instance=ExtResource("1_3glqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.74935, 0)
+visible = false
 
 [node name="CollisionShape3D" parent="InteractionArea" index="0"]
 shape = SubResource("CylinderShape3D_phrf6")
@@ -80,9 +82,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.267761)
 shape = SubResource("BoxShape3D_c1x3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.225586)
+transform = Transform3D(1.65644, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.225586)
 mesh = SubResource("BoxMesh_8qb0c")
 surface_material_override/0 = SubResource("StandardMaterial3D_xafhk")
+
+[node name="Areala" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310791, 0)
+
+[node name="Label3D" type="Label3D" parent="Areala"]
+transform = Transform3D(1, 0, 0, 0, 0.755888, 0.654701, 0, -0.654701, 0.755888, 0, 0, 1.49634)
+text = "Area de trabajo"
 
 [connection signal="closest_object_changed" from="InteractionArea" to="." method="_on_interaction_area_closest_object_changed"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
