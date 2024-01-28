@@ -33,7 +33,7 @@ func _put_intern_holding():
 	print("")
 
 func can_pick() -> bool:
-	return !is_processing
+	return isInUse && !is_processing
 	
 func can_be_processed() -> bool:
 	return isInUse && is_processing

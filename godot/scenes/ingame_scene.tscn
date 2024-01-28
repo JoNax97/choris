@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=26 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://data/object_tags.gd" id="13_e113x"]
 [ext_resource type="Texture2D" uid="uid://dn5i6l4mlq08i" path="res://sprites/Chimi_Rat_Idle - 14.png" id="13_jodap"]
 [ext_resource type="PackedScene" uid="uid://pk64adkf2dgn" path="res://prefabs/client/client.tscn" id="13_vwran"]
+[ext_resource type="Resource" uid="uid://bjwkoewypmnmm" path="res://data/objects/chorizo_cocido.tres" id="15_1acmi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,6 +42,14 @@ albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
 [sub_resource type="Resource" id="Resource_y3nik"]
 script = ExtResource("13_e113x")
 value = 34
+
+[sub_resource type="Resource" id="Resource_ki41t"]
+script = ExtResource("13_e113x")
+value = 64
+
+[sub_resource type="Resource" id="Resource_56cgx"]
+script = ExtResource("13_e113x")
+value = 32
 
 [sub_resource type="QuadMesh" id="QuadMesh_3wdpm"]
 
@@ -141,7 +150,9 @@ size = Vector3(30.1664, 3.07336, 15.5504)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2498, 0.208441, -1.8663)
 duration = 1.0
 allowed_tags = SubResource("Resource_y3nik")
-area_name = "Smashing"
+added_tags = SubResource("Resource_ki41t")
+removed_tags = SubResource("Resource_56cgx")
+area_name = "Trituradora Smashing"
 
 [node name="Area3D" parent="HoldingWorkingArea" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
@@ -160,6 +171,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cgbgd")
 
 [node name="Client" parent="." instance=ExtResource("13_vwran")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.08602, 6)
+desired_object = ExtResource("15_1acmi")
 
 [editable path="Escenario"]
 [editable path="character4"]
