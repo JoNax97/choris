@@ -1,5 +1,7 @@
 class_name PickableObject extends RigidBody3D
 
+signal data_changed
+
 @onready var sprite = $Sprite3D
 
 var data: ObjectData : set = _set_data
@@ -21,9 +23,11 @@ func drop():
 	await get_tree().create_timer(0.7).timeout
 	is_picked = false
 	
-func add_tags(tags: ObjectTags):
-	pass
-
+func modify_tags(tags_to_add: ObjectTags, tags_to_remove: ObjectTags):
+	var combined = data.tags.combine(tags_to_add, tags_to_remove)
+	data = ObjectDataSource.get_data_for_tags(combined)
+	
 func _set_data(d: ObjectData):
 	data = d
 	sprite.texture = data.sprite
+	data_changed.emit()
