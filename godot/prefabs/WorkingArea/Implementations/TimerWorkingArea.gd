@@ -11,6 +11,8 @@ func process(step : float):
 	_process(0)
 	
 func _on_timer_timeout():
+	if !is_processing:
+		return
 	is_processing = false
 	done()
 	

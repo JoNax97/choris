@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=29 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -36,9 +36,6 @@ cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
 fov = 30.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulqt3"]
-albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_3wdpm"]
 
@@ -112,15 +109,6 @@ camera_3D_resource = SubResource("Resource_ge2gr")
 
 [node name="Escenario" parent="." instance=ExtResource("1_lbnxr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210758, 0)
-
-[node name="Plane" parent="Escenario" index="0"]
-material_override = SubResource("StandardMaterial3D_ulqt3")
-
-[node name="Plane_001" parent="Escenario" index="1"]
-material_override = SubResource("StandardMaterial3D_ulqt3")
-
-[node name="Plane_002" parent="Escenario" index="2"]
-material_override = SubResource("StandardMaterial3D_ulqt3")
 
 [node name="character" parent="." instance=ExtResource("2_o1xo3")]
 

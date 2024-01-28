@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ObjectData" load_steps=5 format=3 uid="uid://bgu5wrtxgbamx"]
 
 [ext_resource type="Script" path="res://data/object_data.gd" id="1_lwxey"]
-[ext_resource type="Texture2D" uid="uid://w04p0gni23vo" path="res://sprites/choritest.png" id="2_x0sdb"]
+[ext_resource type="Texture2D" uid="uid://kltsvggwdpqk" path="res://sprites/Chimi_Chori -21.png" id="2_yqhs0"]
 [ext_resource type="Script" path="res://data/object_tags.gd" id="3_fa7t0"]
 
 [sub_resource type="Resource" id="Resource_phpnx"]
@@ -12,4 +12,4 @@ value = 6
 script = ExtResource("1_lwxey")
 tags = SubResource("Resource_phpnx")
 name = "choripan"
-sprite = ExtResource("2_x0sdb")
+sprite = ExtResource("2_yqhs0")
