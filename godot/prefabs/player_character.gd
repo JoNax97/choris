@@ -3,7 +3,7 @@ class_name PlayerCharacter extends CharacterBody3D
 @export var speed = 500.0
 @export var acceleration = 50.0
 
-@onready var sprite : MeshInstance3D = $ModelPivot/MeshInstance3D
+@onready var sprite : AnimatedSprite3D = $ModelPivot/Sprite
 @onready var interaction_area : InteractionArea = $InteractionArea
 @onready var label : Label3D = $Label
 
@@ -48,6 +48,12 @@ func _handle_movement(delta):
 		velocity.y -= gravity * delta
 
 	move_and_slide()
+	
+	var moving = get_real_velocity().length_squared() > 0
+	var anim = "walk" if moving else "idle"
+	
+	if sprite.animation != anim:
+		sprite.play(anim)
 	
 func _handle_interaction_prompt():
 	var text = ""

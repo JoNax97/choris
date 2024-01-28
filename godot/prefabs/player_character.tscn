@@ -1,14 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5t08tnwtjbie"]
+[gd_scene load_steps=8 format=3 uid="uid://c5t08tnwtjbie"]
 
 [ext_resource type="Script" path="res://prefabs/player_character.gd" id="1_u7tqp"]
-[ext_resource type="Material" uid="uid://cgeu5wbalop1h" path="res://shaders/masked_sprite.tres" id="2_8ill0"]
 [ext_resource type="PackedScene" uid="uid://bblw5evq071u" path="res://prefabs/interaction_area.tscn" id="2_ul157"]
+[ext_resource type="SpriteFrames" uid="uid://b5xsecfeua30f" path="res://sprites/player.tres" id="3_ejp1w"]
+[ext_resource type="Shader" path="res://shaders/sprite_shader.gdshader" id="3_i6xfm"]
+[ext_resource type="Texture2D" uid="uid://bicnyiica33k0" path="res://sprites/Chimi_PlayerM.png" id="4_3umns"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5cmy"]
 radius = 0.8
 
-[sub_resource type="QuadMesh" id="QuadMesh_b2gcn"]
-size = Vector2(2, 2)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uebfp"]
+render_priority = 0
+shader = ExtResource("3_i6xfm")
+shader_parameter/y_billboard = false
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/replacement_color = Color(0.188235, 0.505882, 0.85098, 1)
+shader_parameter/similarity = 0.4
+shader_parameter/smoothness = 0.08
+shader_parameter/spill = 0.127
+shader_parameter/tex = ExtResource("4_3umns")
 
 [node name="Character" type="CharacterBody3D"]
 collision_layer = 2
@@ -22,11 +32,12 @@ shape = SubResource("CapsuleShape3D_o5cmy")
 [node name="ModelPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999809, 0.0195639, 0, -0.0195639, 0.999809, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_override = ExtResource("2_8ill0")
-mesh = SubResource("QuadMesh_b2gcn")
-skeleton = NodePath("../..")
+[node name="Sprite" type="AnimatedSprite3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00104, 0.019588)
+material_override = SubResource("ShaderMaterial_uebfp")
+pixel_size = 0.0045
+sprite_frames = ExtResource("3_ejp1w")
+animation = &"walk"
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_ul157")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

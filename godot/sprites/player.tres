@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://b5xsecfeua30f"]
+
+[ext_resource type="Texture2D" uid="uid://bicnyiica33k0" path="res://sprites/Chimi_PlayerM.png" id="1_og01b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjlf5"]
+atlas = ExtResource("1_og01b")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0euqo"]
+atlas = ExtResource("1_og01b")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll47p"]
+atlas = ExtResource("1_og01b")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wpbc"]
+atlas = ExtResource("1_og01b")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxg64"]
+atlas = ExtResource("1_og01b")
+region = Rect2(512, 0, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjlf5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0euqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll47p")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wpbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxg64")
+}],
+"loop": true,
+"name": &"walk_carry",
+"speed": 8.0
+}]
