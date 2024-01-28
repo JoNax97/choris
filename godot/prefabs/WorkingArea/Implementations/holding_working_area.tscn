@@ -37,4 +37,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40866, 0)
 [node name="ResultObject" type="Node3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.892526, 1.69514, 0)
 
+[node name="Label3D" type="Label3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36727, 0)
+text = "Press \"A\" multiples times"
+
+[node name="Label3D2" type="Label3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70779, 0)
+text = "Working Area"
+
 [editable path="InteractionArea"]
