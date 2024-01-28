@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://c4y2meocpquk7"]
+
+[ext_resource type="Texture2D" uid="uid://b0yn8oh4k6g72" path="res://sprites/Chimi_Rat_Idle.png" id="1_2ngxv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8tyf"]
+atlas = ExtResource("1_2ngxv")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v81y1"]
+atlas = ExtResource("1_2ngxv")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty3rd"]
+atlas = ExtResource("1_2ngxv")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7pa3"]
+atlas = ExtResource("1_2ngxv")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mslt"]
+atlas = ExtResource("1_2ngxv")
+region = Rect2(0, 512, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8tyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v81y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty3rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7pa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mslt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]

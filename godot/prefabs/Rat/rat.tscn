@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bojlnmebrrnr4"]
 
 [ext_resource type="Script" path="res://prefabs/Rat/rat.gd" id="1_dagd7"]
-[ext_resource type="SpriteFrames" uid="uid://euk04aievikr" path="res://sprites/ratframes.tres" id="2_5eunc"]
+[ext_resource type="SpriteFrames" uid="uid://c4y2meocpquk7" path="res://sprites/ratframes.tres" id="2_5eunc"]
 [ext_resource type="PackedScene" uid="uid://dujnx50c3sjq8" path="res://prefabs/pickableObject/pickable_object.tscn" id="3_sincc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y58bj"]
@@ -11,13 +11,13 @@ radius = 1.23408
 transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0, 0, 0)
 script = ExtResource("1_dagd7")
 pickable = NodePath("pickable_object")
-speed = 8.0
+speed = 12.0
 spriteframe = NodePath("AnimatedSprite3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.0871558, -0.996195, -4.35451e-08, 0, -4.37114e-08, 1, -0.996195, 0.0871558, 3.8097e-09, 0, 0, 0)
 sprite_frames = ExtResource("2_5eunc")
-frame_progress = 0.612205
+frame_progress = 0.983686
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329998, 0, 0.491702)

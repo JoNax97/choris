@@ -30,4 +30,5 @@ func modify_tags(tags_to_add: ObjectTags, tags_to_remove: ObjectTags):
 func _set_data(d: ObjectData):
 	data = d
 	sprite.texture = data.sprite
+	
 	data_changed.emit()
