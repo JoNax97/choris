@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=34 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0py0b"]
 [ext_resource type="PackedScene" uid="uid://dq1k6jhtiir7w" path="res://Models/Escenario.glb" id="1_lbnxr"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://pk64adkf2dgn" path="res://prefabs/client/client.tscn" id="13_vwran"]
 [ext_resource type="Resource" uid="uid://bjwkoewypmnmm" path="res://data/objects/chorizo_cocido.tres" id="15_1acmi"]
 [ext_resource type="PackedScene" uid="uid://44vhj27joaiq" path="res://prefabs/WorkingArea/Implementations/timer_working_area.tscn" id="16_1dlgy"]
+[ext_resource type="PackedScene" uid="uid://c8e482jk2trc2" path="res://Models/Tablon.glb" id="16_juxn6"]
+[ext_resource type="PackedScene" uid="uid://off2gcugcpyr" path="res://Models/Parrilia.glb" id="17_6ogvc"]
+[ext_resource type="PackedScene" uid="uid://blwkfqr4r8xha" path="res://Models/Choricera.glb" id="17_n6deg"]
+[ext_resource type="Texture2D" uid="uid://cgnbkvbhivbmv" path="res://Models/Parrilia_T_Parrilia_Base_Color.png" id="18_01hou"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1vm13"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -67,6 +71,9 @@ value = 64
 [sub_resource type="Resource" id="Resource_nvhhb"]
 script = ExtResource("13_e113x")
 value = 33
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtbaw"]
+albedo_texture = ExtResource("18_01hou")
 
 [node name="IngameScene" type="Node3D"]
 script = ExtResource("1_vonjy")
@@ -168,6 +175,9 @@ area_name = "Trituradora Smashing"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0407658, 4.26622, 0)
 visible = false
 
+[node name="MeshInstance3D" parent="Trituradora-HoldingWorkingArea" index="1"]
+visible = false
+
 [node name="Area3D" parent="Trituradora-HoldingWorkingArea" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515268, 1.26376)
 script = null
@@ -178,8 +188,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="MeshInstance3D" parent="Trituradora-HoldingWorkingArea/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
+[node name="Pickable_position" parent="Trituradora-HoldingWorkingArea" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0829067, 1.47915, 0)
+
+[node name="ResultObject" parent="Trituradora-HoldingWorkingArea" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71693, 0.950971, 0)
+
 [node name="Label3D2" parent="Trituradora-HoldingWorkingArea" index="7"]
 text = "Trituradora (Smash)"
+
+[node name="Model" type="Node3D" parent="Trituradora-HoldingWorkingArea"]
+
+[node name="Tablon2" parent="Trituradora-HoldingWorkingArea/Model" instance=ExtResource("16_juxn6")]
+transform = Transform3D(-2.50482e-08, 0, -0.573036, 0, 0.573036, 0, 0.573036, 0, -2.50482e-08, -0.489998, 0, 0)
+
+[node name="Choricera" parent="Trituradora-HoldingWorkingArea/Model" instance=ExtResource("17_n6deg")]
+transform = Transform3D(-1.55927e-08, 0, -0.356721, 0, 0.356721, 0, 0.356721, 0, -1.55927e-08, 0.375702, 0.578326, 0.00204706)
 
 [node name="Parrilla-TimerWorkingArea" parent="." instance=ExtResource("16_1dlgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.85907, 0.23982, -2.07028)
@@ -191,8 +215,23 @@ removed_tags = SubResource("Resource_nvhhb")
 [node name="InteractionArea" parent="Parrilla-TimerWorkingArea" index="1"]
 visible = false
 
+[node name="MeshInstance3D" parent="Parrilla-TimerWorkingArea" index="2"]
+transform = Transform3D(1.0028, 0, 0, 0, 1.0028, 0, 0, 0, 1.0028, 0, 0.534927, 0)
+visible = false
+
 [node name="Label3D" parent="Parrilla-TimerWorkingArea" index="7"]
 text = "Parrilla (Timer)"
+
+[node name="Parrilia2" parent="Parrilla-TimerWorkingArea" instance=ExtResource("17_6ogvc")]
+transform = Transform3D(0.600811, 0, 0, 0, 0.600811, 0, 0, 0, 0.600811, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Parrilla-TimerWorkingArea/Parrilia2/Parrilia_Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 7.85046e-17, 7.85046e-17, 0.707107)
+bones/1/rotation = Quaternion(0.707107, 8.42937e-08, 8.42937e-08, 0.707107)
+bones/1/scale = Vector3(1, 1, 1)
+
+[node name="Parrilia" parent="Parrilla-TimerWorkingArea/Parrilia2/Parrilia_Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_jtbaw")
 
 [editable path="Escenario"]
 [editable path="character4"]
@@ -202,3 +241,4 @@ text = "Parrilla (Timer)"
 [editable path="Trituradora-HoldingWorkingArea/Slider3D"]
 [editable path="Parrilla-TimerWorkingArea"]
 [editable path="Parrilla-TimerWorkingArea/InteractionArea"]
+[editable path="Parrilla-TimerWorkingArea/Parrilia2"]
